@@ -1,6 +1,6 @@
 # sae-R2-02 Groupe 109
 
-# Equipe de 5 personnes:
+# Équipe de 5 personnes:
 - Yohann Pech "yoyopch"
 - Vidavid phan "Kitsulfr"
 - Yotam Weber "YotamWe"
