@@ -1,8 +1,11 @@
 package graphe;
 
 import java.util.List;
+import java.util.Map;
 
 public class GrapheMAdj implements IGraphe{
+    private int[][] matrice;
+    private Map<String,Integer> indices;
 
     @Override
     public List<String> getSommets() {
