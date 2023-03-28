@@ -1,9 +1,17 @@
 package graphe;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GrapheHHAdj implements IGraphe{
-    
+
+    private Map<String, Map<String, Integer>> hhadj;
+
+    public GrapheHHAdj() {
+        hhadj = new HashMap<>();
+    }
+
     @Override
     public List<String> getSommets() {
         // TODO Auto-generated method stub
@@ -44,6 +52,9 @@ public class GrapheHHAdj implements IGraphe{
     public void ajouterArc(String source, String destination, Integer valeur) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'ajouterArc'");
+        ajouterSommet(source);
+        ajouterSommet(destination);
+        hhadj.get(source).put(destination, valeur);
     }
 
     @Override
