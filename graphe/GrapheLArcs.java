@@ -2,8 +2,8 @@ package graphe;
 
 import java.util.List;
 
-public class GrapheHHAdj implements IGraphe{
-    
+public class GrapheLArcs implements IGraphe{
+
     @Override
     public List<String> getSommets() {
         // TODO Auto-generated method stub
