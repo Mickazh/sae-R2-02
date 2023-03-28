@@ -2,8 +2,8 @@ package graphe;
 
 import java.util.List;
 
-public class GrapheHHAdj implements IGraphe{
-    
+public class GrapheMAdj implements IGraphe{
+
     @Override
     public List<String> getSommets() {
         // TODO Auto-generated method stub
@@ -57,4 +57,5 @@ public class GrapheHHAdj implements IGraphe{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'oterArc'");
     }
+    
 }
