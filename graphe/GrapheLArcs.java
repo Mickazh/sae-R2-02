@@ -23,14 +23,13 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public int getValuation(String src, String dest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getValuation'");
+        if(contientArc(src,dest))
+            return arcs.get(src) && arcs.get(dest);
     }
 
     @Override
     public boolean contientSommet(String sommet) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contientSommet'");
+
     }
 
     @Override
