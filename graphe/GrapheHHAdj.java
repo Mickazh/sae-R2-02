@@ -1,5 +1,6 @@
 package graphe;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,44 +15,36 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public List<String> getSommets() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSommets'");
+        return new ArrayList<>(hhadj.keySet());
     }
 
     @Override
     public List<String> getSucc(String sommet) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSucc'");
+        return new ArrayList<>(hhadj.get(sommet).keySet());
     }
 
     @Override
     public int getValuation(String src, String dest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getValuation'");
+        return hhadj.get(src).get(dest);
     }
 
     @Override
     public boolean contientSommet(String sommet) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contientSommet'");
+        return hhadj.containsKey(sommet);
     }
 
     @Override
     public boolean contientArc(String src, String dest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contientArc'");
+        return true;
     }
 
     @Override
     public void ajouterSommet(String noeud) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ajouterSommet'");
+        hhadj.putIfAbsent(noeud,new HashMap<>());
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ajouterArc'");
         ajouterSommet(source);
         ajouterSommet(destination);
         hhadj.get(source).put(destination, valeur);
@@ -59,13 +52,11 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public void oterSommet(String noeud) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'oterSommet'");
+        int c = 5;
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'oterArc'");
+        int c = 5;
     }
 }
