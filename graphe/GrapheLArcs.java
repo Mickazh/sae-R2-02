@@ -3,6 +3,12 @@ package graphe;
 import java.util.List;
 
 public class GrapheLArcs implements IGraphe{
+    private List<Arc> arcs;
+
+
+    public GrapheLArcs(){
+         arcs = new ArraysList<Arc>();
+    }
 
     @Override
     public List<String> getSommets() {
