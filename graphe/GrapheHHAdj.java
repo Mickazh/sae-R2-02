@@ -52,9 +52,9 @@ public class GrapheHHAdj implements IGraphe{
     public void ajouterArc(String source, String destination, Integer valeur) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'ajouterArc'");
-        //ajouterSommet(source);
-        //ajouterSommet(destination);
-        //hhadj.get(source).put(destination, valeur);
+        ajouterSommet(source);
+        ajouterSommet(destination);
+        hhadj.get(source).put(destination, valeur);
     }
 
     @Override
