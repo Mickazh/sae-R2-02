@@ -25,7 +25,12 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public int getValuation(String src, String dest) {
-        return hhadj.get(src).get(dest);
+        if(contientArc(src,dest)) {
+            return hhadj.get(src).get(dest);
+        }
+        else {
+            return -1;
+        }
     }
 
     @Override
@@ -35,7 +40,7 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public boolean contientArc(String src, String dest) {
-        return true;
+        return hhadj.containsKey(src) && hhadj.get(src).containsKey(dest);
     }
 
     @Override
@@ -52,11 +57,20 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public void oterSommet(String noeud) {
-        int c = 5;
+        if (hhadj.containsKey(noeud)) {
+            // Supprime les arcs sortants du sommet
+            for (String successeur : hhadj.get(noeud).keySet()) {
+                hhadj.get(successeur).remove(noeud);
+            }
+            // Supprime le sommet lui-même
+            hhadj.remove(noeud);
+        }
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        int c = 5;
+        if (contientArc(source, destination)) {
+            hhadj.get(source).remove(destination);
+        }
     }
 }
