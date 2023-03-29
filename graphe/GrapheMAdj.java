@@ -23,6 +23,16 @@ public class GrapheMAdj implements IGraphe{
         return sommets;
     }
 
+    public String getSommetSucc(int value){
+        assert indices.containsValue(value);
+        for(String s : indices.keySet()){
+            if (indices.get(s)==value)
+                    return s;
+
+        }
+        return null;
+    }
+    
     @Override
     public List<String> getSucc(String sommet) {
         assert indices.containsKey(sommet);
@@ -30,7 +40,7 @@ public class GrapheMAdj implements IGraphe{
         int[]valSom = matrice[indices.get(sommet)];
         for(int i = 0; i < valSom.length; ++i){
             if (valSom[i]!=0)
-                Succ.add(indices.(i));
+                Succ.add(getSommetSucc(i));
         }
         return Succ;
     }
