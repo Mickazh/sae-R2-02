@@ -4,6 +4,7 @@ import java.util.List;
 
 public class GrapheLArcs implements IGraphe{
     private List<Arc> arcs;
+    private Arc a;
 
 
     public GrapheLArcs(){
@@ -12,13 +13,17 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public List<String> getSommets() {
-        // TODO Auto-generated method stub
+        for (Arc i : arcs) {
+            this.arcs.add(a.getSource());
+        return this.arcs;
         throw new UnsupportedOperationException("Unimplemented method 'getSommets'");
     }
 
     @Override
     public List<String> getSucc(String sommet) {
-        // TODO Auto-generated method stub
+            for (Arc i : arcs) {
+                this.arcs.add(a.getDestination());
+                return this.arcs;
         throw new UnsupportedOperationException("Unimplemented method 'getSucc'");
     }
 
