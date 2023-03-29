@@ -30,7 +30,7 @@ public class GrapheMAdj implements IGraphe{
         int[]valSom = matrice[indices.get(sommet)];
         for(int i = 0; i < valSom.length; ++i){
             if (valSom[i]!=0)
-                Succ.add(indices.keySet())
+                Succ.add(indices.(i));
         }
         return Succ;
     }
@@ -47,7 +47,7 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public boolean contientArc(String src, String dest) {
-        return matrice[indices.get(src)][indices.get(dest)]!=0;
+        return matrice[indices.get(src)][indices.get(dest)]==0;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void oterArc(String source, String destination) {
-        matrice[indices.get(source)][indices.get(destination)]=0;
+        matrice[indices.get(source)][indices.get(destination)]= 0;
     }
 
 }
