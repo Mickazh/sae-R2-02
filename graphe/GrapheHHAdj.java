@@ -25,11 +25,10 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public int getValuation(String src, String dest) {
-        if(contientArc(src,dest)) {
+        if (contientArc(src, dest)) {
             return hhadj.get(src).get(dest);
-        }
-        else {
-            return -1;
+        } else {
+            throw new RuntimeException("Aucun arc trouvé entre " + src + " et " + dest);
         }
     }
 
