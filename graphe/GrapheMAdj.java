@@ -9,7 +9,7 @@ public class GrapheMAdj implements IGraphe{
     //Integer est la valeur
     //représente l'indice du sommet
     public GrapheMAdj(int tailleMatrice){
-        matrice=new int[tailleMatrice][tailleMatrice];
+        matrice = new int[tailleMatrice][tailleMatrice];
         indices=new HashMap<>();
     }
 
@@ -17,9 +17,7 @@ public class GrapheMAdj implements IGraphe{
     public List<String> getSommets() {
         assert !indices.isEmpty();
         List<String > sommets = new ArrayList<>();
-        for(String s : indices.keySet()){
-            sommets.add(s);
-        }
+        sommets.addAll(indices.keySet());
         return sommets;
     }
 
