@@ -76,6 +76,7 @@ public class GrapheHHAdj implements IGraphe{
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         for (String sommet : hhadj.keySet()) {
             Map<String, Integer> succ = hhadj.get(sommet);
             if (succ.isEmpty()) {
