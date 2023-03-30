@@ -73,4 +73,24 @@ public class GrapheHHAdj implements IGraphe{
             hhadj.get(source).remove(destination);
         }
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (String sommet : hhadj.keySet()) {
+            Map<String, Integer> succ = hhadj.get(sommet);
+            if (succ.isEmpty()) {
+                sb.append(sommet).append(":").append(", ");
+            }
+            else {
+                for (String successeur : succ.keySet()) {
+                    sb.append(sommet).append("-").append(successeur).append("(").append(succ.get(successeur)).append(")").append(", ");
+                }
+            }
+        }
+
+        if (sb.length() > 0) {
+            sb.setLength(sb.length() - 2); // Retire le dernier ", "
+        }
+        return sb.toString();
+    }
 }
