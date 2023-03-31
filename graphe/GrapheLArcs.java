@@ -13,7 +13,6 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public List<String> getSommets() {
-        asser(!arcs.isEmpty());
         List<String> sommet = new ArrayList<String>();
         for (Arc i : arcs) {
             if (!sommet.contains(i.getSource())) {
