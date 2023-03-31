@@ -3,29 +3,33 @@ package graphe;
 import java.util.List;
 
 public class GrapheLArcs implements IGraphe{
+    private List<Arc> arcs;
+
+
+
+    public GrapheLArcs(){
+         arcs = new ArraysList<Arc>();
+    }
 
     @Override
     public List<String> getSommets() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSommets'");
+        return new ArrayList<Arc>();
     }
 
     @Override
     public List<String> getSucc(String sommet) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSucc'");
+        return new ArrayList<Arc>(arcs.get(sommet));
     }
 
     @Override
     public int getValuation(String src, String dest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getValuation'");
+        if(contientArc(src,dest))
+            return arcs.get(src) && arcs.get(dest);
     }
 
     @Override
     public boolean contientSommet(String sommet) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contientSommet'");
+
     }
 
     @Override
