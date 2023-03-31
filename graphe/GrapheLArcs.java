@@ -14,7 +14,7 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public List<String> getSommets() {
-        assert(!arcs.isEmpty());
+        assert(!arcs.isEmpty());//faudra penser à enlever cet assert, pour que pas ça bloque le programme
         List<String> sommet = new ArrayList<>();
         for (Arc i : arcs) {
             if (!sommet.contains(i.getSource())) {
@@ -78,11 +78,11 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public void oterSommet(String noeud) {
-
+        arcs.removeIf(arc -> arc.getSource().equals(noeud) || arc.getDestination().equals(noeud));
     }
 
     @Override
     public void oterArc(String source, String destination) {
-
+        arcs.removeIf(arc -> arc.getSource().equals(source) && arc.getDestination().equals(destination));
     }
 }
