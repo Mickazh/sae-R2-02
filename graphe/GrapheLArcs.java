@@ -56,31 +56,26 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public boolean contientArc(String src, String dest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contientArc'");
+
     }
 
     @Override
     public void ajouterSommet(String noeud) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ajouterSommet'");
+
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ajouterArc'");
+
     }
 
     @Override
     public void oterSommet(String noeud) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'oterSommet'");
+
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'oterArc'");
+
     }
 }
