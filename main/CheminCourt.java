@@ -6,7 +6,7 @@ import graphe.IGrapheConst;
 
 public class CheminCourt {
 
-    static public void Dijkstra(String source, String destination, IGrapheConst graphe){
+    public static void Dijkstra(String source, String destination, IGrapheConst graphe){
         ArrayList<String> sommets = new ArrayList<>(graphe.getSommets());
         HashMap<String, Double> dist = new HashMap<>();
         HashMap<String, String> prev = new HashMap<>();
@@ -58,7 +58,7 @@ public class CheminCourt {
     //     }
     //     return noeuMin;
     // }
-    static private String getMinVal(HashMap<String, Double> dist, String u, IGrapheConst graphe, ArrayList<String> sommets){
+    private static String getMinVal(HashMap<String, Double> dist, String u, IGrapheConst graphe, ArrayList<String> sommets){
         Double valMin = Double.POSITIVE_INFINITY;
         String noeuMin = "";
         for (String noeu : sommets) {
