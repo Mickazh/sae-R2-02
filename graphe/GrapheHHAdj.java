@@ -25,11 +25,10 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public int getValuation(String src, String dest) {
-        if(contientArc(src,dest)) {
+        if (contientArc(src, dest)) {
             return hhadj.get(src).get(dest);
-        }
-        else {
-            return -1;
+        } else {
+            throw new RuntimeException("Aucun arc trouvé entre " + src + " et " + dest);
         }
     }
 
@@ -72,5 +71,26 @@ public class GrapheHHAdj implements IGraphe{
         if (contientArc(source, destination)) {
             hhadj.get(source).remove(destination);
         }
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (String sommet : hhadj.keySet()) {
+            Map<String, Integer> succ = hhadj.get(sommet);
+            if (succ.isEmpty()) {
+                sb.append(sommet).append(":").append(", ");
+            }
+            else {
+                for (String successeur : succ.keySet()) {
+                    sb.append(sommet).append("-").append(successeur).append("(").append(succ.get(successeur)).append(")").append(", ");
+                }
+            }
+        }
+
+        if (sb.length() > 0) {
+            sb.setLength(sb.length() - 2); // Retire le dernier ", "
+        }
+        return sb.toString();
     }
 }
