@@ -3,33 +3,49 @@ package graphe;
 import java.util.List;
 
 public class GrapheLArcs implements IGraphe{
-    private List<Arc> arcs;
-
-
 
     public GrapheLArcs(){
-         arcs = new ArraysList<Arc>();
+        arcs = new ArraysList<Arc>();
     }
-
     @Override
     public List<String> getSommets() {
-        return new ArrayList<Arc>();
+        asser(!arcs.isEmpty());
+        List<String> sommet = new ArrayList<String>();
+        for (Arc i : arcs) {
+            if (!sommet.contains(i.getSource())) {
+                sommet.add(i.getSource());
+            }
+            if (!sommet.contains(i.getDestination())) {
+                sommet.add(i.getDestination());
+            }
+        }
+        return sommet;
     }
 
     @Override
     public List<String> getSucc(String sommet) {
-        return new ArrayList<Arc>(arcs.get(sommet));
+        List<String> successeurs = new ArrayList<String>();
+        for (Arc i : arcs) {
+            if (i.getSource().equals(sommet)) {
+                successeurs.add(i.getDestination());
+            }
+        }
+        return successeurs;
     }
 
     @Override
     public int getValuation(String src, String dest) {
-        if(contientArc(src,dest))
-            return arcs.get(src) && arcs.get(dest);
+        for (Arc arc : arcs) {
+            if (arc.getSource().equals(sommet) && arc.getDestination().equals(successeur)) {
+                return arc.getDistance();
+            }
+        }
     }
 
     @Override
     public boolean contientSommet(String sommet) {
-
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'contientSommet'");
     }
 
     @Override
