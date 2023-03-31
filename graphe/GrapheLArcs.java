@@ -13,17 +13,37 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public List<String> getSommets() {
-        return new ArrayList<String>();
+        asser(!arcs.isEmpty());
+        List<String> sommet = new ArrayList<String>();
+        for (Arc i : arcs) {
+            if (!sommet.contains(i.getSource())) {
+                sommet.add(i.getSource());
+            }
+            if (!sommet.contains(i.getDestination())) {
+                sommet.add(i.getDestination());
+            }
+        }
+        return sommet;
     }
 
     @Override
     public List<String> getSucc(String sommet) {
-        return new ArrayList<String>(arcs.get(sommet));
+        List<String> successeurs = new ArrayList<String>();
+        for (Arc i : arcs) {
+            if (i.getSource().equals(sommet)) {
+                successeurs.add(i.getDestination());
+            }
+        }
+        return successeurs;
     }
 
     @Override
     public int getValuation(String src, String dest) {
-
+        for (Arc i : arcs) {
+            if (i.getSource().equals(sommet) && i.getDestination().equals(successeur)) {
+                return i.getValeur();
+            }
+        }
     }
 
     @Override
