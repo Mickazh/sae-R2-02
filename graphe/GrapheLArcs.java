@@ -1,5 +1,6 @@
 package graphe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GrapheLArcs implements IGraphe{
@@ -8,13 +9,13 @@ public class GrapheLArcs implements IGraphe{
 
 
     public GrapheLArcs(){
-         arcs = new ArraysList<Arc>();
+         arcs = new ArrayList<>();
     }
 
     @Override
     public List<String> getSommets() {
-        asser(!arcs.isEmpty());
-        List<String> sommet = new ArrayList<String>();
+        assert(!arcs.isEmpty());
+        List<String> sommet = new ArrayList<>();
         for (Arc i : arcs) {
             if (!sommet.contains(i.getSource())) {
                 sommet.add(i.getSource());
@@ -28,7 +29,7 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public List<String> getSucc(String sommet) {
-        List<String> successeurs = new ArrayList<String>();
+        List<String> successeurs = new ArrayList<>();
         for (Arc i : arcs) {
             if (i.getSource().equals(sommet)) {
                 successeurs.add(i.getDestination());
@@ -40,33 +41,39 @@ public class GrapheLArcs implements IGraphe{
     @Override
     public int getValuation(String src, String dest) {
         for (Arc i : arcs) {
-            if (i.getSource().equals(sommet) && i.getDestination().equals(successeur)) {
+            if (i.getSource().equals(src) && i.getDestination().equals(dest)) {
                 return i.getValeur();
             }
         }
+        return 0;
     }
 
     @Override
     public boolean contientSommet(String sommet) {
-        for (String i :arcs){
-            if (i.getSommet() == sommet)
+        for (Arc i :arcs){
+            if (i.getSource().equals(sommet))
                 return true;
         }
+        return false;
     }
 
     @Override
     public boolean contientArc(String src, String dest) {
-
+        for (Arc i :arcs){
+            if (i.getSource().equals(src) && i.getSource().equals(dest))
+                return true;
+        }
+        return false;
     }
 
     @Override
     public void ajouterSommet(String noeud) {
-
+        arcs.add(new Arc(noeud, "", 0));
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-
+        arcs.add(new Arc(source, destination, valeur));
     }
 
     @Override

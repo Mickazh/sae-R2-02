@@ -35,38 +35,38 @@ public class CheminCourt {
             }
         }
         boolean first = true;
-        String noeu = destination;
+        String noeud = destination;
         do {
             if (!first){
                 System.out.print("- ");
             }
-            System.out.print(noeu + " ");
+            System.out.print(noeud + " ");
             first = false;
-            noeu = prev.get(noeu);
-        } while (noeu != null);
+            noeud = prev.get(noeud);
+        } while (noeud != null);
         System.out.println("longueur : " + dist.get(destination).intValue());
     }
 
     // private String getMinVal(String u, IGrapheConst graphe){
     //     Double valMin = Double.POSITIVE_INFINITY;
-    //     String noeuMin = "";
-    //     for (String noeu : graphe.getSucc(u)) {
-    //         if (graphe.getValuation(u, noeu) < valMin){
-    //             valMin = (double)graphe.getValuation(u, noeu);
-    //             noeuMin = noeu;
+    //     String noeudMin = "";
+    //     for (String noeud : graphe.getSucc(u)) {
+    //         if (graphe.getValuation(u, noeud) < valMin){
+    //             valMin = (double)graphe.getValuation(u, noeud);
+    //             noeudMin = noeud;
     //         }
     //     }
     //     return noeuMin;
     // }
     private static String getMinVal(HashMap<String, Double> dist, String u, IGrapheConst graphe, ArrayList<String> sommets){
         Double valMin = Double.POSITIVE_INFINITY;
-        String noeuMin = "";
-        for (String noeu : sommets) {
-            if (dist.get(noeu) < valMin){
-                valMin = dist.get(noeu);
-                noeuMin = noeu;
+        String noeudMin = "";
+        for (String noeud : sommets) {
+            if (dist.get(noeud) < valMin){
+                valMin = dist.get(noeud);
+                noeudMin = noeud;
             }
         }
-        return noeuMin;
+        return noeudMin;
     }
 }
