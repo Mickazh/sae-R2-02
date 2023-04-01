@@ -49,7 +49,7 @@ public class GrapheLArcs implements IGraphe{
     @Override
     public boolean contientSommet(String sommet) {
         for (String i :arcs){
-            if (i.getSommet() == sommet)
+            if (i.getSommet().equals(sommet))
                 return true;
         }
     }
@@ -61,7 +61,9 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public void ajouterSommet(String noeud) {
-
+        for (String i :arcs)
+            if (!(i.getSommet().equals(sommet)))
+                arcs.add(noeud);
     }
 
     @Override
