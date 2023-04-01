@@ -18,7 +18,7 @@ public class GrapheLArcs implements IGraphe{
             if (!sommet.contains(i.getSource())) {
                 sommet.add(i.getSource());
             }
-            if (!sommet.contains(i.getDestination())) {
+            if (!sommet.contains(i.getDestination()) && i.getDestination()!="")  {
                 sommet.add(i.getDestination());
             }
         }
