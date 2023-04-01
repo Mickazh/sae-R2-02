@@ -39,7 +39,7 @@ public class GrapheLArcs implements IGraphe{
     @Override
     public int getValuation(String src, String dest) {
         for (Arc i : arcs) {
-            if (i.getSource().equals(sommet) && i.getDestination().equals(successeur)) {
+            if (i.getSource().equals(sommet)) {
                 return i.getValeur();
             }
         }
