@@ -1,8 +1,11 @@
 package graphe;
 
 import java.util.List;
+import java.util.Map;
 
 public class GrapheLAdj implements IGraphe{
+
+    private Map<String, List<Arc>> ladj;
 
     @Override
     public List<String> getSommets() {
