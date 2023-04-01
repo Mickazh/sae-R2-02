@@ -57,7 +57,12 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public boolean contientArc(String src, String dest) {
-
+        for (Arc i : arcs) {
+            if (i.getSource().equals(src) && i.getDestination().equals(dest)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
