@@ -34,8 +34,7 @@ class IGrapheTest {
 			+ "H-G(2), H-F(4), "
 			+ "A-C(2), A-D(1), "
 			+ "B-G(3), "
-			+ "C-H(2) "
-			;
+			+ "C-H(2) ";
 
 	@Test
 	void exo3_1Maths() {
@@ -66,7 +65,7 @@ class IGrapheTest {
 		g.ajouterSommet("A"); // ne fait rien car A est deja present
 		assertEquals(g31, g.toString());
 		assertThrows(IllegalArgumentException.class,
-				() -> g.ajouterArc("G", "B", 1));		// deja present
+				() -> g.ajouterArc("G", "B", 1));        // deja present
 		g.oterSommet("X"); // ne fait rien si le sommet n'est pas present
 		assertEquals(g31, g.toString());
 		assertThrows(IllegalArgumentException.class,
@@ -76,10 +75,10 @@ class IGrapheTest {
 				() -> g.ajouterArc("A", "B", -1)); // valuation negative
 	}
 
-	/*@Test
+	@Test
 	void importer() throws NumberFormatException, FileNotFoundException {
 		System.out.println("SAE graphes");
-		IGraphe g = new GrapheLAdj();
+		IGraphe g = new GrapheHHAdj();
 		Arc a = GraphImporter.importer("graphes/ac/g-10-1.txt", g);
 		assertEquals(g.toString(), "1-3(5), "
 				+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
@@ -88,6 +87,6 @@ class IGrapheTest {
 				+ " 8-2(4), 8-6(1), 9-2(4)");
 		assertEquals("5", a.getSource());
 		assertEquals("7", a.getDestination());
-	}*/
+	}
 
 }

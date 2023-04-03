@@ -1,9 +1,6 @@
 package graphe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GrapheHHAdj implements IGraphe{
 
@@ -79,14 +76,15 @@ public class GrapheHHAdj implements IGraphe{
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-
-        for (String sommet : hhadj.keySet()) {
+        Set<String> triSommet = new TreeSet<>(hhadj.keySet()); // trie les sommets par ordre alphabétique
+        for (String sommet : triSommet) {
             Map<String, Integer> succ = hhadj.get(sommet);
-            if (succ.isEmpty()) {
+            Set<String> triSucc = new TreeSet<>(succ.keySet()); // trie les successeurs d'un sommet par ordre alphabétique
+            if (triSucc.isEmpty()) {
                 sb.append(sommet).append(":").append(", ");
             }
             else {
-                for (String successeur : succ.keySet()) {
+                for (String successeur : triSucc) {
                     sb.append(sommet).append("-").append(successeur).append("(").append(succ.get(successeur)).append(")").append(", ");
                 }
             }
