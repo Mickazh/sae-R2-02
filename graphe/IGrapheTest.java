@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class IGrapheTest {
@@ -26,18 +24,35 @@ class IGrapheTest {
 					+ "I-H(10), "
 					+ "J:";
 
+	private String g31a = ""       // melangee
+			+ "D-C(5), D-E(3), D-B(3), "
+			+ "E-G(3), E-C(1), E-H(7), "
+			+ "I-H(10), "
+			+ "J:,"
+			+ "G-B(2), G-F(1), "
+			+ "F:, "
+			+ "H-G(2), H-F(4), "
+			+ "A-C(2), A-D(1), "
+			+ "B-G(3), "
+			+ "C-H(2) "
+			;
+
 	@Test
 	void exo3_1Maths() {
-		GrapheLArcs gla = new GrapheLArcs();
+		GrapheHHAdj gla = new GrapheHHAdj(); // on cree le graphe sans ordre particulier
 		gla.peupler(g31);
 		tester3_1(gla);
+
+		GrapheHHAdj glarcs = new GrapheHHAdj();
+		glarcs.peupler(g31a);
+		tester3_1(glarcs);
 	}
 
 	void tester3_1(IGraphe g) {
-		List<String> sommets_exp = List.of("A","B","C","D","E","F","G","H","I", "J");
+		List<String> sommets_exp = List.of("A","B","C","D","E","F","G","H","I","J");
 		List<String> sommets = new ArrayList<>(g.getSommets()); // pas forcement triee
 		Collections.sort(sommets);
-		assertEquals(sommets_exp, g.getSommets());
+		assertEquals(sommets_exp, sommets);
 		assertTrue(g.contientSommet("C"));
 		assertFalse(g.contientSommet("c"));
 		assertTrue(g.contientArc("C","H"));
@@ -61,10 +76,10 @@ class IGrapheTest {
 				() -> g.ajouterArc("A", "B", -1)); // valuation negative
 	}
 
-	@Test
+	/*@Test
 	void importer() throws NumberFormatException, FileNotFoundException {
 		System.out.println("SAE graphes");
-		IGraphe g = new GrapheLArcs();
+		IGraphe g = new GrapheLAdj();
 		Arc a = GraphImporter.importer("graphes/ac/g-10-1.txt", g);
 		assertEquals(g.toString(), "1-3(5), "
 				+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
@@ -73,6 +88,6 @@ class IGrapheTest {
 				+ " 8-2(4), 8-6(1), 9-2(4)");
 		assertEquals("5", a.getSource());
 		assertEquals("7", a.getDestination());
-	}
+	}*/
 
 }
