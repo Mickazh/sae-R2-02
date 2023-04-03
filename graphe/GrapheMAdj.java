@@ -21,7 +21,7 @@ public class GrapheMAdj implements IGraphe{
         return sommets;
     }
 
-    public String getSommetSucc(int value){
+    public String getSommetNom(int value){
         assert indices.containsValue(value);
         for(String s : indices.keySet()){
             if (indices.get(s)==value)
@@ -38,7 +38,7 @@ public class GrapheMAdj implements IGraphe{
         int[]valSom = matrice[indices.get(sommet)];
         for(int i = 0; i < valSom.length; ++i){
             if (valSom[i]!=0)
-                Succ.add(getSommetSucc(i));
+                Succ.add(getSommetNom(i));
         }
         return Succ;
     }
@@ -103,13 +103,14 @@ public class GrapheMAdj implements IGraphe{
 
     public String toString(){
         StringBuilder s = new StringBuilder();
+        s.append(" ");
         for (String so : indices.keySet()){
             s.append(so);
             s.append(" ");
         }
         s.append(System.lineSeparator());
         for(int i = 0; i < matrice.length; ++i){
-            s.append(getSommetSucc(i));
+            s.append(getSommetNom(i));
             for(int j = 0; j < matrice.length; ++j){
                 if(matrice[i][j]!=-1)
                     s.append(matrice[i][j]);
