@@ -57,8 +57,8 @@ public class GrapheLArcs implements IGraphe {
 
     @Override
     public boolean contientArc(String src, String dest) {
-        for (Arc i : arcs) {
-            if (i.getSource().equals(src) && i.getDestination().equals(dest)) {
+        for (Arc arc : arcs) {
+            if (arc.getSource().equals(src) && arc.getDestination().equals(dest)) {
                 return true;
             }
         }
@@ -83,11 +83,7 @@ public class GrapheLArcs implements IGraphe {
 
     @Override
     public void oterSommet(String noeud) {
-        for (Arc i : arcs)
-            if (i.getSource().equals(noeud) || i.getDestination().equals(noeud)) {
-                arcs.remove(i);
-            }
-
+        arcs.removeIf(i -> contientSommet(noeud));
     }
 
     @Override
