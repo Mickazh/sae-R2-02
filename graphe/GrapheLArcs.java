@@ -1,5 +1,6 @@
 package graphe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GrapheLArcs implements IGraphe{
@@ -8,12 +9,12 @@ public class GrapheLArcs implements IGraphe{
 
 
     public GrapheLArcs(){
-         arcs = new ArraysList<Arc>();
+         arcs = new ArrayList<>();
     }
 
     @Override
     public List<String> getSommets() {
-        List<String> sommet = new ArrayList<String>();
+        List<String> sommet = new ArrayList<>();
         for (Arc i : arcs) {
             if (!sommet.contains(i.getSource())) {
                 sommet.add(i.getSource());
@@ -29,7 +30,7 @@ public class GrapheLArcs implements IGraphe{
     public List<String> getSucc(String sommet) {
         List<String> successeurs = new ArrayList<String>();
         for (Arc i : arcs) {
-            if (i.getSource().equals(sommet)) {
+            if (i.getSource().equals(sommet) && !i.getDestination().equals("")) {
                 successeurs.add(i.getDestination());
             }
         }
@@ -48,8 +49,8 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public boolean contientSommet(String sommet) {
-        for (String i :arcs){
-            if (i.getSommet().equals(sommet))
+        for (Arc i :arcs){
+            if (i.getSource().equals(sommet))
                 return true;
         }
         return false;
@@ -67,25 +68,31 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public void ajouterSommet(String noeud) {
-        for (String i :arcs)
-            if (!(i.getSommet().equals(noeud))||!(i.getDestination().equals(noeud)))
-                arcs.add(noeud);
+            if (!contientSommet(noeud)) {
+
+                arcs.add(new Arc (noeud, "", 0));
+            }
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-
+        if (!contientArc(source, destination)) {
+            arcs.add(new Arc (source, destination, valeur));
+        }
     }
 
     @Override
     public void oterSommet(String noeud) {
-        for (String i :arcs)
-            if (i.getSource().equals(noeud) || i.getDestination().equals(noeud))
-                arcs.remove(noeud);
+        for (Arc i: arcs)
+            if(contientSommet(noeud)) {
+                arcs.remove(i);
+            }
     }
 
     @Override
     public void oterArc(String source, String destination) {
-
+        for (Arc i: arcs)
+            if(contientArc(source, destination))
+                arcs.remove(i);
     }
 }
