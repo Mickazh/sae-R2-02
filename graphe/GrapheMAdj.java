@@ -60,7 +60,7 @@ public class GrapheMAdj implements IGraphe{
 
     public void SetMatrice(){
         int [][]matrice2=new int[indices.size()+1][indices.size()+1];
-        Arrays.fill(matrice2,0);
+        Arrays.fill(matrice2,-1);
         for(int i = 0; i < indices.size(); ++i){
             for(int j = 0; j< indices.size(); ++j){
                 matrice2[i][j]=matrice[i][j];
@@ -82,7 +82,7 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        assert indices.containsKey(source) && indices.containsKey(destination);
+        assert indices.containsKey(source) && indices.containsKey(destination) && getValuation(source,destination)!=-1;
         matrice[indices.get(source)][indices.get(destination)]= valeur;
     }
 
@@ -98,7 +98,25 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void oterArc(String source, String destination) {
-        matrice[indices.get(source)][indices.get(destination)]= 0;
+        matrice[indices.get(source)][indices.get(destination)]= -1;
+    }
+
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        for (String so : indices.keySet()){
+            s.append(so);
+            s.append(" ");
+        }
+        for(int i = 0; i < matrice.length; ++i){
+            s.append(getSommetSucc(i));
+            for(int j = 0; j < matrice.length; ++j){
+                if(matrice[i][j]!=-1)
+                    s.append(matrice[i][j]);
+                else
+                    s.append(" ");
+            }
+        }
+        return s.toString();
     }
 
 }
