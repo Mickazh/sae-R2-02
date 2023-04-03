@@ -73,20 +73,19 @@ public class GrapheMAdj implements IGraphe{
         if(!indices.containsKey(noeud)){
             SetMatrice();
             indices.put(noeud, indices.size());
-        }else{
-            System.out.println("Sommet deja existant");
         }
-
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        if(indices.containsKey(source) && indices.containsKey(destination))
-            matrice[indices.get(source)][indices.get(destination)]= valeur;
-        else if(!indices.containsKey(destination)){
+        if(matrice[indices.get(source)][indices.get(destination)]==-1 && indices.containsKey(source) && indices.containsKey(destination))
+            throw new IllegalArgumentException("L'arc existe deja");
+        else if(!indices.containsKey(source))
+            ajouterSommet(source);
+        else if (!indices.containsKey(destination))
             ajouterSommet(destination);
+        else
             matrice[indices.get(source)][indices.get(destination)]= valeur;
-        }
     }
 
     @Override
@@ -94,14 +93,15 @@ public class GrapheMAdj implements IGraphe{
         if(indices.containsKey(noeud)){
             indices.remove(noeud);
             SetMatrice();
-        }else
-            System.out.println("Le sommet n'existe pas");
-
+        }
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        matrice[indices.get(source)][indices.get(destination)]= -1;
+        if(matrice[indices.get(source)][indices.get(destination)]==-1)
+            throw new IllegalArgumentException("L'arc n'estiste pas");
+        else
+            matrice[indices.get(source)][indices.get(destination)]= -1;
     }
 
     public String toString(){
