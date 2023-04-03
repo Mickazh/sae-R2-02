@@ -10,13 +10,13 @@ public class GrapheMAdj implements IGraphe{
     //représente l'indice du sommet
     public GrapheMAdj(int tailleMatrice){
         matrice = new int[tailleMatrice][tailleMatrice];
-        indices=new HashMap<>();
+        indices = new HashMap<>();
     }
 
     @Override
     public List<String> getSommets() {
         assert !indices.isEmpty();
-        List<String > sommets = new ArrayList<>();
+        List<String> sommets = new ArrayList<>();
         sommets.addAll(indices.keySet());
         return sommets;
     }
@@ -99,7 +99,7 @@ public class GrapheMAdj implements IGraphe{
             indices.remove(noeud);
             SetMatrice();
         }else
-            System.out.println("Le sommet n'exite pas");
+            System.out.println("Le sommet n'existe pas");
 
     }
 

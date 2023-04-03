@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class TestMadj
 {
-    @Test
     public static void main(String[] args){
         GrapheMAdj graphe = new GrapheMAdj(5);
         String population = "A-B(8), A-C(6), A-D(2), B-E(4), C-B(3), C-E(4), D-B(5), E:";
