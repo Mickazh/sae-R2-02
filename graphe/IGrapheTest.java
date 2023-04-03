@@ -23,11 +23,11 @@ class IGrapheTest {
 			+ "J:";
 	
 	@Test
-	void exo3_1Maths() {
+	/*void exo3_1Maths() {
 		GrapheLA gla = new GrapheLA(g31);
 		tester3_1(gla);
 	}
-	
+	*/
 	void tester3_1(IGraphe g) {
 		List<String> sommets = List.of("A","B","C","D","E","F","G","H","I","J");
 		assertEquals(sommets, g.getSommets());

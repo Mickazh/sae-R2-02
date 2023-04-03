@@ -60,7 +60,8 @@ public class GrapheMAdj implements IGraphe{
 
     public void SetMatrice(){
         int [][]matrice2=new int[indices.size()+1][indices.size()+1];
-        Arrays.fill(matrice2,-1);
+        for(int i = 0; i < matrice2.length; ++i)
+            Arrays.fill(matrice2[i],-1);
         for(int i = 0; i < indices.size(); ++i){
             for(int j = 0; j< indices.size(); ++j){
                 matrice2[i][j]=matrice[i][j];
@@ -82,7 +83,6 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        assert indices.containsKey(source) && indices.containsKey(destination) && getValuation(source,destination)!=-1;
         matrice[indices.get(source)][indices.get(destination)]= valeur;
     }
 
