@@ -58,17 +58,21 @@ public class GrapheMAdj implements IGraphe{
         return matrice[indices.get(src)][indices.get(dest)]==0;
     }
 
+    public void SetMatrice(){
+        int [][]matrice2=new int[indices.size()+1][indices.size()+1];
+        Arrays.fill(matrice2,0);
+        for(int i = 0; i < indices.size(); ++i){
+            for(int j = 0; j< indices.size(); ++j){
+                matrice2[i][j]=matrice[i][j];
+            }
+        }
+        matrice=matrice2;
+    }
+
     @Override
     public void ajouterSommet(String noeud) {
         if(!indices.containsKey(noeud)){
-            int [][]matrice2=new int[indices.size()+1][indices.size()+1];
-            Arrays.fill(matrice2,0);
-            for(int i = 0; i < indices.size(); ++i){
-                for(int j = 0; j< indices.size(); ++j){
-                    matrice2[i][j]=matrice[i][j];
-                }
-            }
-            matrice=matrice2;
+            SetMatrice();
             indices.put(noeud, indices.size());
         }else{
             System.out.println("Sommet deja existant");
@@ -84,8 +88,12 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void oterSommet(String noeud) {
-        assert indices.containsKey(noeud);
-        indices.remove(noeud);
+        if(indices.containsKey(noeud)){
+            indices.remove(noeud);
+            SetMatrice();
+        }else
+            System.out.println("Le sommet n'exite pas");
+
     }
 
     @Override
