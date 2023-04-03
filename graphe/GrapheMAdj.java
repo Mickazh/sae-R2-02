@@ -107,6 +107,7 @@ public class GrapheMAdj implements IGraphe{
             s.append(so);
             s.append(" ");
         }
+        s.append(System.lineSeparator());
         for(int i = 0; i < matrice.length; ++i){
             s.append(getSommetSucc(i));
             for(int j = 0; j < matrice.length; ++j){
@@ -115,6 +116,7 @@ public class GrapheMAdj implements IGraphe{
                 else
                     s.append(" ");
             }
+            s.append(System.lineSeparator());
         }
         return s.toString();
     }
