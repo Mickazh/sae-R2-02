@@ -10,7 +10,6 @@ import static org.junit.Assert.assertTrue;
 public class TestGrapheLArc {
     @Test
     public void Test(){
-
             GrapheLArcs graphe = new GrapheLArcs();
             String population = "A-B(8), A-C(6), A-D(2), B-E(4), C-B(3), C-E(4), D-B(5), E:";
             graphe.peupler(population);
