@@ -1,9 +1,7 @@
 package tests;
 
-import graphe.GrapheHHAdj;
 import graphe.GrapheMAdj;
 import main.CheminCourt;
-import org.junit.Test;
 
 public class TestMadj
 {
