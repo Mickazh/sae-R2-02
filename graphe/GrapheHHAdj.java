@@ -46,9 +46,15 @@ public class GrapheHHAdj implements IGraphe{
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        ajouterSommet(source);
-        ajouterSommet(destination);
-        hhadj.get(source).put(destination, valeur);
+        if (!contientArc(source,destination) && valeur > 0){
+            ajouterSommet(source);
+            ajouterSommet(destination);
+            hhadj.get(source).put(destination, valeur);
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     @Override
@@ -71,6 +77,9 @@ public class GrapheHHAdj implements IGraphe{
     public void oterArc(String source, String destination) {
         if (contientArc(source, destination)) {
             hhadj.get(source).remove(destination);
+        }
+        else {
+            throw new IllegalArgumentException();
         }
     }
 
