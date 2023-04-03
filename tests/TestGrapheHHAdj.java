@@ -2,9 +2,29 @@ package tests;
 
 import graphe.GrapheHHAdj;
 import main.CheminCourt;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class TestGrapheHHAdj {
-    
+
+    @Test
+    public void Test(){
+        GrapheHHAdj graphe = new GrapheHHAdj();
+        String population = "A-B(8), A-C(6), A-D(2), B-E(4), C-B(3), C-E(4), D-B(5), E:";
+        graphe.peupler(population);
+        assertTrue(graphe.contientSommet("A"));
+        assertTrue(graphe.contientSommet("B"));
+        assertTrue(graphe.contientArc("A","B"));
+        graphe.oterArc("E","B");
+        assertEquals(population,graphe.toString());
+        graphe.ajouterSommet("F");
+        assertTrue(graphe.contientSommet("F"));
+        graphe.ajouterArc("F","C",6);
+        assertTrue(graphe.contientArc("F","C"));
+        assertEquals(8,graphe.getValuation("A","B"));
+        graphe.oterSommet("C");
+        System.out.println(graphe);
+    }
     public static void main(String[] args) {
         GrapheHHAdj graphe = new GrapheHHAdj();
         String population = "A-B(8), A-C(6), A-D(2), B-E(4), C-B(3), C-E(4), D-B(5), E:";
@@ -23,8 +43,5 @@ public class TestGrapheHHAdj {
         for (String dest : graphe2.getSommets()) {
             CheminCourt.Dijkstra("A", dest, graphe2);
         }
-
-
-
     }
 }
