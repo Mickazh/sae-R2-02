@@ -3,12 +3,13 @@ package graphe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GrapheLArcs implements IGraphe {
+public class GrapheLArcs implements IGraphe{
     private List<Arc> arcs;
 
 
-    public GrapheLArcs() {
-        arcs = new ArrayList<>();
+
+    public GrapheLArcs(){
+         arcs = new ArrayList<>();
     }
 
     @Override
@@ -18,7 +19,7 @@ public class GrapheLArcs implements IGraphe {
             if (!sommet.contains(i.getSource())) {
                 sommet.add(i.getSource());
             }
-            if (!sommet.contains(i.getDestination()) && !i.getDestination().equals("")) {
+            if (!sommet.contains(i.getDestination()) && !i.getDestination().equals(""))  {
                 sommet.add(i.getDestination());
             }
         }
@@ -48,7 +49,7 @@ public class GrapheLArcs implements IGraphe {
 
     @Override
     public boolean contientSommet(String sommet) {
-        for (Arc i : arcs) {
+        for (Arc i :arcs){
             if (i.getSource().equals(sommet))
                 return true;
         }
@@ -67,22 +68,22 @@ public class GrapheLArcs implements IGraphe {
 
     @Override
     public void ajouterSommet(String noeud) {
-        if (!contientSommet(noeud)) {
-            arcs.add(new Arc(noeud, "", 0));
-        }
+            if (!contientSommet(noeud)) {
+                arcs.add(new Arc (noeud, "", 0));
+            }
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
         if (!contientArc(source, destination)) {
-            arcs.add(new Arc(source, destination, valeur.intValue()));
+            arcs.add(new Arc (source, destination, valeur));
         }
     }
 
     @Override
     public void oterSommet(String noeud) {
         for (Arc i : arcs)
-            if (i.getSource().equals(noeud) || i.getDestination().equals(noeud)) {
+            if(i.getSource().equals(noeud) || i.getDestination().equals(noeud)) {
                 arcs.remove(i);
             }
     }
@@ -90,8 +91,8 @@ public class GrapheLArcs implements IGraphe {
     @Override
     public void oterArc(String source, String destination) {
         for (Arc i : arcs)
-            if (i.getSource().equals(source) && i.getDestination().equals(destination)) {
+            if(i.getSource().equals(source) && i.getDestination().equals(destination)) {
                 arcs.remove(i);
-            }
+        }
     }
 }

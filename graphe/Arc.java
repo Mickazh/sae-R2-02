@@ -33,4 +33,8 @@ public class Arc {
     public void setValeur(int valeur) {
         this.valeur = valeur;
     }
+
+    public Integer getValuation() {
+        return getValeur();
+    }
 }
