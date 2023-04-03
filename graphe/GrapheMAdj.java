@@ -85,12 +85,6 @@ public class GrapheMAdj implements IGraphe{
     public void ajouterArc(String source, String destination, Integer valeur) {
         if(indices.containsKey(source) && indices.containsKey(destination))
             matrice[indices.get(source)][indices.get(destination)]= valeur;
-        else{
-            ajouterSommet(source);
-            ajouterSommet(destination);
-            ajouterArc(source, destination, valeur);
-        }
-
     }
 
     @Override
