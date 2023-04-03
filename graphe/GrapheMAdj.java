@@ -10,7 +10,7 @@ public class GrapheMAdj implements IGraphe{
     //représente l'indice du sommet
     public GrapheMAdj(int tailleMatrice){
         matrice = new int[tailleMatrice][tailleMatrice];
-        indices=new HashMap<>();
+        indices = new HashMap<>();
     }
 
     @Override
