@@ -22,7 +22,7 @@ public class TestGrapheHHAdj {
         graphe.ajouterArc("F","C",6);
         assertTrue(graphe.contientArc("F","C"));
         assertEquals(8,graphe.getValuation("A","B"));
-        graphe.oterSommet("C");
+        graphe.oterSommet("A");
         System.out.println(graphe);
     }
     public static void main(String[] args) {
