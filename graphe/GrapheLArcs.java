@@ -14,16 +14,16 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public List<String> getSommets() {
-        List<String> sommet = new ArrayList<>();
+        List<String> sommets = new ArrayList<>();
         for (Arc i : arcs) {
-            if (!sommet.contains(i.getSource())) {
-                sommet.add(i.getSource());
+            if (!sommets.contains(i.getSource())) {
+                sommets.add(i.getSource());
             }
-            if (!sommet.contains(i.getDestination()) && !i.getDestination().equals(""))  {
-                sommet.add(i.getDestination());
+            if (!sommets.contains(i.getDestination()) && !i.getDestination().equals(""))  {
+                sommets.add(i.getDestination());
             }
         }
-        return sommet;
+        return sommets;
     }
 
     @Override
@@ -83,8 +83,8 @@ public class GrapheLArcs implements IGraphe{
 
     @Override
     public void oterSommet(String noeud) {
-        for (Arc i: arcs)
-            if(contientSommet(noeud)) {
+        for (Arc i : arcs)
+            if(i.getSource().equals(noeud) || i.getDestination().equals(noeud)) {
                 arcs.remove(i);
             }
     }
