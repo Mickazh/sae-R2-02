@@ -20,7 +20,7 @@ public class TestMadj
         CheminCourt.Dijkstra("A", "E", graphe);
 
         System.out.println("Test plus grand exemple cours");
-        GrapheHHAdj graphe2 = new GrapheHHAdj();
+        GrapheMAdj graphe2 = new GrapheMAdj(1);
         String population2 = "A-B(6), A-G(4), A-K(3), B-C(5), B-D(2), C-D(1), D-E(4), D-F(5), E-C(3), E-J(1), F-I(1), G-F(2), G-H(3), H-F(1), I-J(3), I-H(1), J:, K-B(2), K-G(1)";
         graphe2.peupler(population2);
         for (String dest : graphe2.getSommets()) {
