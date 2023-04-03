@@ -61,6 +61,10 @@ public class GrapheHHAdj implements IGraphe{
             for (String successeur : hhadj.get(noeud).keySet()) {
                 hhadj.get(successeur).remove(noeud);
             }
+            // Supprime le sommet de la liste des successeurs des autres sommets
+            for (String sommet : hhadj.keySet()) {
+                hhadj.get(sommet).remove(noeud);
+            }
             // Supprime le sommet lui-même
             hhadj.remove(noeud);
         }

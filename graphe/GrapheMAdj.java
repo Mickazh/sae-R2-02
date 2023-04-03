@@ -10,18 +10,18 @@ public class GrapheMAdj implements IGraphe{
     //représente l'indice du sommet
     public GrapheMAdj(int tailleMatrice){
         matrice = new int[tailleMatrice][tailleMatrice];
-        indices=new HashMap<>();
+        indices = new HashMap<>();
     }
 
     @Override
     public List<String> getSommets() {
         assert !indices.isEmpty();
-        List<String > sommets = new ArrayList<>();
+        List<String> sommets = new ArrayList<>();
         sommets.addAll(indices.keySet());
         return sommets;
     }
 
-    public String getSommetSucc(int value){
+    public String getSommetNom(int value){
         assert indices.containsValue(value);
         for(String s : indices.keySet()){
             if (indices.get(s)==value)
@@ -38,7 +38,7 @@ public class GrapheMAdj implements IGraphe{
         int[]valSom = matrice[indices.get(sommet)];
         for(int i = 0; i < valSom.length; ++i){
             if (valSom[i]!=0)
-                Succ.add(getSommetSucc(i));
+                Succ.add(getSommetNom(i));
         }
         return Succ;
     }
@@ -58,17 +58,22 @@ public class GrapheMAdj implements IGraphe{
         return matrice[indices.get(src)][indices.get(dest)]==0;
     }
 
+    public void SetMatrice(){
+        int [][]matrice2=new int[indices.size()+1][indices.size()+1];
+        for(int i = 0; i < matrice2.length; ++i)
+            Arrays.fill(matrice2[i],-1);
+        for(int i = 0; i < indices.size(); ++i){
+            for(int j = 0; j< indices.size(); ++j){
+                matrice2[i][j]=matrice[i][j];
+            }
+        }
+        matrice=matrice2;
+    }
+
     @Override
     public void ajouterSommet(String noeud) {
         if(!indices.containsKey(noeud)){
-            int [][]matrice2=new int[indices.size()+1][indices.size()+1];
-            Arrays.fill(matrice2,0);
-            for(int i = 0; i < indices.size(); ++i){
-                for(int j = 0; j< indices.size(); ++j){
-                    matrice2[i][j]=matrice[i][j];
-                }
-            }
-            matrice=matrice2;
+            SetMatrice();
             indices.put(noeud, indices.size());
         }else{
             System.out.println("Sommet deja existant");
@@ -78,19 +83,44 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        assert indices.containsKey(source) && indices.containsKey(destination);
-        matrice[indices.get(source)][indices.get(destination)]= valeur;
+        if(indices.containsKey(source) && indices.containsKey(destination))
+            matrice[indices.get(source)][indices.get(destination)]= valeur;
     }
 
     @Override
     public void oterSommet(String noeud) {
-        assert indices.containsKey(noeud);
-        indices.remove(noeud);
+        if(indices.containsKey(noeud)){
+            indices.remove(noeud);
+            SetMatrice();
+        }else
+            System.out.println("Le sommet n'existe pas");
+
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        matrice[indices.get(source)][indices.get(destination)]= 0;
+        matrice[indices.get(source)][indices.get(destination)]= -1;
+    }
+
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        s.append(" ");
+        for (String so : indices.keySet()){
+            s.append(so);
+            s.append(" ");
+        }
+        s.append(System.lineSeparator());
+        for(int i = 0; i < matrice.length; ++i){
+            s.append(getSommetNom(i));
+            for(int j = 0; j < matrice.length; ++j){
+                if(matrice[i][j]!=-1)
+                    s.append(matrice[i][j]);
+                else
+                    s.append(" ");
+            }
+            s.append(System.lineSeparator());
+        }
+        return s.toString();
     }
 
 }

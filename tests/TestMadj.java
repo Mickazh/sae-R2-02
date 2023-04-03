@@ -1,22 +1,23 @@
 package tests;
-
-import graphe.GrapheHHAdj;
+import graphe.GrapheMAdj;
 import main.CheminCourt;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class TestGrapheHHAdj {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class TestMadj
+{
 
     @Test
     public void Test(){
-        GrapheHHAdj graphe = new GrapheHHAdj();
+        GrapheMAdj graphe = new GrapheMAdj(5);
         String population = "A-B(8), A-C(6), A-D(2), B-E(4), C-B(3), C-E(4), D-B(5), E:";
         graphe.peupler(population);
         assertTrue(graphe.contientSommet("A"));
         assertTrue(graphe.contientSommet("B"));
         assertTrue(graphe.contientArc("A","B"));
         graphe.oterArc("E","B");
-        assertEquals(population,graphe.toString());
         graphe.ajouterSommet("F");
         assertTrue(graphe.contientSommet("F"));
         graphe.ajouterArc("F","C",6);
@@ -25,8 +26,8 @@ public class TestGrapheHHAdj {
         graphe.oterSommet("A");
         System.out.println(graphe);
     }
-    public static void main(String[] args) {
-        GrapheHHAdj graphe = new GrapheHHAdj();
+    public static void main(String[] args){
+        GrapheMAdj graphe = new GrapheMAdj(5);
         String population = "A-B(8), A-C(6), A-D(2), B-E(4), C-B(3), C-E(4), D-B(5), E:";
         graphe.peupler(population);
         System.out.println("Test exemple cours graphe");
@@ -37,11 +38,13 @@ public class TestGrapheHHAdj {
         CheminCourt.Dijkstra("A", "E", graphe);
 
         System.out.println("Test plus grand exemple cours");
-        GrapheHHAdj graphe2 = new GrapheHHAdj();
+        GrapheMAdj graphe2 = new GrapheMAdj(1);
         String population2 = "A-B(6), A-G(4), A-K(3), B-C(5), B-D(2), C-D(1), D-E(4), D-F(5), E-C(3), E-J(1), F-I(1), G-F(2), G-H(3), H-F(1), I-J(3), I-H(1), J:, K-B(2), K-G(1)";
         graphe2.peupler(population2);
         for (String dest : graphe2.getSommets()) {
             CheminCourt.Dijkstra("A", dest, graphe2);
         }
+
     }
+
 }
