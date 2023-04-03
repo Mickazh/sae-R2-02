@@ -68,7 +68,7 @@ public class GrapheLArcs implements IGraphe{
     @Override
     public void ajouterSommet(String noeud) {
         for (String i :arcs)
-            if (!(i.getSommet().equals(sommet))||!(i.getDestination().equals(sommet)))
+            if (!(i.getSommet().equals(noeud))||!(i.getDestination().equals(noeud)))
                 arcs.add(noeud);
     }
 
