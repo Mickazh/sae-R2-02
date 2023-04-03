@@ -79,7 +79,7 @@ class IGrapheTest {
 	void importer() throws NumberFormatException, FileNotFoundException {
 		System.out.println("SAE graphes");
 		IGraphe g = new GrapheHHAdj();
-		Arc a = GraphImporter.importer("graphes/ac/g-10-1.txt", g);
+		Arc a = GraphImporter.importer("graphesTxt/ac/g-10-1.txt", g);
 		assertEquals(g.toString(), "1-3(5), "
 				+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
 				+ "3-4(4), 3-5(4), 4-10(1), 4-2(1), 4-7(3), "
