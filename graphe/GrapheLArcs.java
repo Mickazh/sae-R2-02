@@ -93,5 +93,6 @@ public class GrapheLArcs implements IGraphe{
         for (Arc i : arcs)
             if(i.getSource().equals(source) && i.getDestination().equals(destination)) {
                 arcs.remove(i);
+        }
     }
 }
