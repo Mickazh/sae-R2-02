@@ -8,21 +8,19 @@ public class GrapheMAdj implements IGraphe{
     //String est la clé
     //Integer est la valeur
     //représente l'indice du sommet
-    public GrapheMAdj(int tailleMatrice){
-        matrice = new int[tailleMatrice][tailleMatrice];
+    public GrapheMAdj(){
+        matrice = new int[1][1];
         indices = new HashMap<>();
     }
 
     @Override
     public List<String> getSommets() {
-        assert !indices.isEmpty();
         List<String> sommets = new ArrayList<>();
         sommets.addAll(indices.keySet());
         return sommets;
     }
 
     public String getSommetNom(int value){
-        assert indices.containsValue(value);
         for(String s : indices.keySet()){
             if (indices.get(s)==value)
                     return s;
@@ -55,7 +53,7 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public boolean contientArc(String src, String dest) {
-        return matrice[indices.get(src)][indices.get(dest)]==0;
+        return matrice[indices.get(src)][indices.get(dest)]!=-1;
     }
 
     public void SetMatrice(){
@@ -75,15 +73,18 @@ public class GrapheMAdj implements IGraphe{
         if(!indices.containsKey(noeud)){
             SetMatrice();
             indices.put(noeud, indices.size());
-        }else{
-            System.out.println("Sommet deja existant");
         }
-
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        if(indices.containsKey(source) && indices.containsKey(destination))
+        if(matrice[indices.get(source)][indices.get(destination)]==-1 && indices.containsKey(source) && indices.containsKey(destination))
+            throw new IllegalArgumentException("L'arc existe deja");
+        else if(!indices.containsKey(source))
+            ajouterSommet(source);
+        else if (!indices.containsKey(destination))
+            ajouterSommet(destination);
+        else
             matrice[indices.get(source)][indices.get(destination)]= valeur;
     }
 
@@ -92,19 +93,20 @@ public class GrapheMAdj implements IGraphe{
         if(indices.containsKey(noeud)){
             indices.remove(noeud);
             SetMatrice();
-        }else
-            System.out.println("Le sommet n'existe pas");
-
+        }
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        matrice[indices.get(source)][indices.get(destination)]= -1;
+        if(matrice[indices.get(source)][indices.get(destination)]==-1)
+            throw new IllegalArgumentException("L'arc n'estiste pas");
+        else
+            matrice[indices.get(source)][indices.get(destination)]= -1;
     }
 
     public String toString(){
         StringBuilder s = new StringBuilder();
-        s.append(" ");
+        s.append("  ");
         for (String so : indices.keySet()){
             s.append(so);
             s.append(" ");
@@ -113,10 +115,11 @@ public class GrapheMAdj implements IGraphe{
         for(int i = 0; i < matrice.length; ++i){
             s.append(getSommetNom(i));
             for(int j = 0; j < matrice.length; ++j){
-                if(matrice[i][j]!=-1)
+                if(matrice[i][j]!=-1){
                     s.append(matrice[i][j]);
-                else
+                }else
                     s.append(" ");
+                s.append(" ");
             }
             s.append(System.lineSeparator());
         }
