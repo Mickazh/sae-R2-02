@@ -41,7 +41,7 @@ public class GrapheLArcs implements IGraphe {
     public int getValuation(String src, String dest) {
         for (Arc i : arcs) {
             if (i.getSource().equals(src) && i.getDestination().equals(dest)) {
-                return i.getValeur();
+                return i.getValuation();
             }
         }
         return -1;
@@ -102,12 +102,10 @@ public class GrapheLArcs implements IGraphe {
         List<String> sommets = getSommets();
         Collections.sort(sommets);
 
-
         for (String sommet : sommets) {
             Collections.sort(getSucc(sommet));
             if (getSucc(sommet).isEmpty()) {
                 sb.append(sommet).append(":, ");
-
             } else {
                 for (String successeur : getSucc(sommet)) {
                     int valeur = getValuation(sommet, successeur);
@@ -116,6 +114,8 @@ public class GrapheLArcs implements IGraphe {
                 }
             }
         }
+
+        // Remove the last comma and space
         if (sb.length() > 2) {
             sb.setLength(sb.length() - 2);
         }
