@@ -107,10 +107,17 @@ public class GrapheMAdj implements IGraphe{
         StringBuilder s = new StringBuilder();
         for(int i = 0; i < matrice.length; ++i){
             for (int j=0; j < matrice.length; ++j){
-                if(matrice[i][j]!=-1)
-                    s.append(indices.get(getSommetNom(i) + "-" + indices.get(getSommetNom(j))+"("+matrice[i][j] +")"));
+                if(matrice[i][j]!=-1){
+                    s.append(getSommetNom(i));
+                    s.append("-");
+                    s.append(getSommetNom(j));
+                    s.append("(");
+                    s.append(matrice[i][j]);
+                    s.append("), ");
+                }
             }
         }
+        s.setLength(s.length()-2);
         return s.toString();
     }
 
