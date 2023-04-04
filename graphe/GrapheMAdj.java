@@ -79,7 +79,7 @@ public class GrapheMAdj implements IGraphe{
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
         if (valeur<0)
-            throw new IllegalArgumentException("L'arc est de valeur negative")
+            throw new IllegalArgumentException("L'arc est de valeur negative");
         else if(matrice[indices.get(source)][indices.get(destination)]!=-1 && indices.containsKey(source) && indices.containsKey(destination))
             throw new IllegalArgumentException("L'arc existe deja");
         else if(!indices.containsKey(source))
@@ -101,7 +101,7 @@ public class GrapheMAdj implements IGraphe{
     @Override
     public void oterArc(String source, String destination) {
         if(matrice[indices.get(source)][indices.get(destination)]==-1)
-            throw new IllegalArgumentException("L'arc n'estiste pas");
+            throw new IllegalArgumentException("L'arc n'existe pas");
         else
             matrice[indices.get(source)][indices.get(destination)]= -1;
     }
