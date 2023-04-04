@@ -98,10 +98,7 @@ public class GrapheLAdj implements IGraphe {
         }
         if (sb.length() > 2) {
             sb.setLength(sb.length() - 2);
-            sb.delete(sb.length() - 2, sb.length());
-            sb.append("\n");
         }
         return sb.toString();
     }
-
 }
