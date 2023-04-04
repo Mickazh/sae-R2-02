@@ -48,7 +48,7 @@ class IGrapheTest {
 
 		/*GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
 		gla2.peupler(g31);
-		tester3_1(gla2);*/
+		tester3_1(gla2);*/  /*Partie Anass*/
 
 		/*GrapheMAdj gla3 = new GrapheMAdj(); // on cree le graphe sans ordre particulier
 		gla3.peupler(g31);
