@@ -1,6 +1,7 @@
 package graphe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GrapheLArcs implements IGraphe {
@@ -74,7 +75,7 @@ public class GrapheLArcs implements IGraphe {
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        if (!contientArc(source, destination)) {
+        if (!contientArc(source, destination) && valeur>0) {
             arcs.add(new Arc(source, destination, valeur));
             return;
         }
@@ -98,17 +99,27 @@ public class GrapheLArcs implements IGraphe {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Arc arc : arcs) {
-            sb.append(arc.getSource()).append("-").append(arc.getDestination());
-            if (arc.getValuation() > 0) {
-                sb.append("(").append(arc.getValuation());
-                sb.append("), ");
+        List<String> sommets = getSommets();
+        Collections.sort(sommets);
+
+        for (String sommet : sommets) {
+            Collections.sort(getSucc(sommet));
+            if (getSucc(sommet).isEmpty()) {
+                sb.append(sommet).append(":, ");
+            } else {
+                for (String successeur : getSucc(sommet)) {
+                    int valeur = getValuation(sommet, successeur);
+                    sb.append(sommet).append("-").append(successeur);
+                    sb.append("(").append(valeur).append("), ");
+                }
             }
-            if (arc.getValuation() == 0){
-                sb.append(arc.getSource()).append(":");
-            }
-            sb.append("\n");
         }
+
+        // Remove the last comma and space
+        if (sb.length() > 2) {
+            sb.setLength(sb.length() - 2);
+        }
+
         return sb.toString();
     }
 }
