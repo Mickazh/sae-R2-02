@@ -7,9 +7,13 @@ import java.util.List;
 public class GrapheLArcs implements IGraphe {
     private List<Arc> arcs;
 
-
     public GrapheLArcs() {
         arcs = new ArrayList<>();
+    }
+
+    public GrapheLArcs(String grapheTxt) {
+        this();
+        peupler(grapheTxt);
     }
 
     @Override
@@ -103,11 +107,13 @@ public class GrapheLArcs implements IGraphe {
         Collections.sort(sommets);
 
         for (String sommet : sommets) {
-            Collections.sort(getSucc(sommet));
-            if (getSucc(sommet).isEmpty()) {
+            List<String> succ = getSucc(sommet);
+            if (succ.isEmpty()) {
                 sb.append(sommet).append(":, ");
-            } else {
-                for (String successeur : getSucc(sommet)) {
+            }
+            else {
+                Collections.sort(succ);
+                for (String successeur : succ) {
                     int valeur = getValuation(sommet, successeur);
                     sb.append(sommet).append("-").append(successeur);
                     sb.append("(").append(valeur).append("), ");
