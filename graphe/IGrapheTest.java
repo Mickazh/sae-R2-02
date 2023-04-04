@@ -39,25 +39,25 @@ public class IGrapheTest {
 
 	@Test
 	public void exo3_1Maths() {
-        /*GrapheHHAdj gla = new GrapheHHAdj(); // on cree le graphe sans ordre particulier
+        GrapheHHAdj gla = new GrapheHHAdj(); // on cree le graphe sans ordre particulier
 		gla.peupler(g31);
-		tester3_1(gla);*/
+		tester3_1(gla);
 
-        /*GrapheLArcs gla1 = new GrapheLArcs(); // on cree le graphe sans ordre particulier
+        GrapheLArcs gla1 = new GrapheLArcs(); // on cree le graphe sans ordre particulier
 		gla1.peupler(g31);
-		tester3_1(gla1);*/
+		tester3_1(gla1);
 
 		GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
 		gla2.peupler(g31);
 		tester3_1(gla2);
 
-        /*GrapheMAdj gla3 = new GrapheMAdj(); // on cree le graphe sans ordre particulier
+        GrapheMAdj gla3 = new GrapheMAdj(); // on cree le graphe sans ordre particulier
 		gla3.peupler(g31);
-		tester3_1(gla3);*/
+		tester3_1(gla3);
 
-        /*GrapheHHAdj glarcs = new GrapheHHAdj();
+        GrapheHHAdj glarcs = new GrapheHHAdj();
 		glarcs.peupler(g31a);
-		tester3_1(glarcs);*/
+		tester3_1(glarcs);
 	}
 
 	void tester3_1(IGraphe g) {
