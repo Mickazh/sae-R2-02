@@ -1,7 +1,6 @@
 package graphe;
 
 import java.util.*;
-
 public class GrapheLAdj implements IGraphe {
 
     private Map<String, List<Arc>> ladj = new HashMap<>();
@@ -88,17 +87,23 @@ public class GrapheLAdj implements IGraphe {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        Set<String> triSommet = new TreeSet<>(ladj.keySet()); // trie les sommets par ordre alphabétique
+        Set<String> triSommet = new TreeSet<>(ladj.keySet());
         for (String sommet : triSommet) {
-            /*
-            A completer ...
-            */
+            List<Arc> arcsSortants = new ArrayList<>(ladj.get(sommet));
+            arcsSortants.sort(Comparator.comparing(Arc::getDestination));
+            for (Arc arc : arcsSortants) {
+                sb.append(sommet).append("-").append(arc.getDestination()).append("(").append(arc.getValuation()).append("), ");
+            }
         }
-
         if (sb.length() > 2) {
-            sb.setLength(sb.length() - 2); // Retire le dernier ", "
+            sb.setLength(sb.length() - 2);
+            sb.delete(sb.length() - 2, sb.length());
+            sb.append("\n");
         }
-
         return sb.toString();
     }
+
+
+
+
 }
