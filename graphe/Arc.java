@@ -26,15 +26,11 @@ public class Arc {
         this.destination = destination;
     }
 
-    public int getValeur() {
+    public Integer getValuation() {
         return valeur;
     }
 
     public void setValeur(int valeur) {
         this.valeur = valeur;
-    }
-
-    public Integer getValuation() {
-        return getValeur();
     }
 }
