@@ -92,6 +92,9 @@ public class GrapheLAdj implements IGraphe {
         for (String sommet : triSommet) {
             List<Arc> arcsSortants = new ArrayList<>(ladj.get(sommet));
             arcsSortants.sort(Comparator.comparing(Arc::getDestination));
+            if (arcsSortants.isEmpty()){
+            sb.append(sommet).append(":").append(";");
+            }
             for (Arc arc : arcsSortants) {
                 sb.append(sommet).append("-").append(arc.getDestination()).append("(").append(arc.getValuation()).append("), ");
             }
