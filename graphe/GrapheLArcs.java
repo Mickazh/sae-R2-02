@@ -102,7 +102,10 @@ public class GrapheLArcs implements IGraphe {
             sb.append(arc.getSource()).append("-").append(arc.getDestination());
             if (arc.getValeur() > 0) {
                 sb.append("(").append(arc.getValeur());
-                sb.append(")");
+                sb.append("), ");
+            }
+            if (arc.getValeur() == 0){
+                sb.append(arc.getSource()).append(":");
             }
             sb.append("\n");
         }

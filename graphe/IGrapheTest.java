@@ -42,9 +42,9 @@ class IGrapheTest {
 		gla.peupler(g31);
 		tester3_1(gla);
 
-		/*GrapheLArcs gla1 = new GrapheLArcs(); // on cree le graphe sans ordre particulier
+		GrapheLArcs gla1 = new GrapheLArcs(); // on cree le graphe sans ordre particulier
 		gla1.peupler(g31);
-		tester3_1(gla1);*/
+		tester3_1(gla1);
 
 		/*GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
 		gla2.peupler(g31);
