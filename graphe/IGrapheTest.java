@@ -1,13 +1,14 @@
 package graphe;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class IGrapheTest {
 	// graphe de l'exercice 3.1 du poly de maths
@@ -46,9 +47,9 @@ class IGrapheTest {
 		gla1.peupler(g31);
 		tester3_1(gla1);*/
 
-		/*GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
+		GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
 		gla2.peupler(g31);
-		tester3_1(gla2);*/  /*Partie Anass*/
+		tester3_1(gla2);
 
 		/*GrapheMAdj gla3 = new GrapheMAdj(); // on cree le graphe sans ordre particulier
 		gla3.peupler(g31);

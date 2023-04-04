@@ -30,7 +30,7 @@ public class GrapheLAdj implements IGraphe {
         if (this.ladj.containsKey(src)) {
             for (Arc arc : this.ladj.get(src)) {
                 if (arc.getDestination().equals(dest)) {
-                    return arc.getValeur();
+                    return arc.getValuation();
                 }
             }
         }
