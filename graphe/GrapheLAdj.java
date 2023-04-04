@@ -53,18 +53,21 @@ public class GrapheLAdj implements IGraphe {
 
     @Override
     public void ajouterSommet(String noeud) {
-        if (!this.ladj.containsKey(noeud)) {
-            this.ladj.put(noeud, new ArrayList<>());
-        }
+        this.ladj.putIfAbsent(noeud, new ArrayList<>());
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        if (!this.ladj.containsKey(source)) {
-            this.ladj.put(source, new ArrayList<>());
+        if (!contientArc(source, destination) && valeur > 0) {
+            ajouterSommet(source);
+            ajouterSommet(destination);
+            Arc arc = new Arc(source, destination, valeur);
+            this.ladj.get(source).add(arc);
         }
-        Arc arc = new Arc(source, destination, valeur);
-        this.ladj.get(source).add(arc);
+        else{
+            throw new IllegalArgumentException();
+        }
+
     }
 
     @Override
@@ -80,9 +83,12 @@ public class GrapheLAdj implements IGraphe {
 
     @Override
     public void oterArc(String source, String destination) {
-        if (this.ladj.containsKey(source)) {
+        if (contientArc(source,destination)) {
             List<Arc> succ = this.ladj.get(source);
             succ.removeIf(arc -> arc.getDestination().equals(destination));
+        }
+        else{
+            throw new IllegalArgumentException();
         }
     }
 
@@ -93,7 +99,7 @@ public class GrapheLAdj implements IGraphe {
             List<Arc> arcsSortants = new ArrayList<>(ladj.get(sommet));
             arcsSortants.sort(Comparator.comparing(Arc::getDestination));
             if (arcsSortants.isEmpty()){
-            sb.append(sommet).append(":").append(";");
+            sb.append(sommet).append(":").append(", ");
             }
             for (Arc arc : arcsSortants) {
                 sb.append(sommet).append("-").append(arc.getDestination()).append("(").append(arc.getValuation()).append("), ");

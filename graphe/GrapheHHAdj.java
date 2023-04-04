@@ -25,7 +25,7 @@ public class GrapheHHAdj implements IGraphe{
         if (contientArc(src, dest)) {
             return hhadj.get(src).get(dest);
         } else {
-            throw new RuntimeException("Aucun arc trouv� entre " + src + " et " + dest);
+            throw new RuntimeException("Aucun arc trouve entre " + src + " et " + dest);
         }
     }
 
