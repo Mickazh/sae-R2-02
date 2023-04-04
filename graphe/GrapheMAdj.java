@@ -56,12 +56,9 @@ public class GrapheMAdj implements IGraphe{
 
     public void SetMatrice(){
         int [][]matrice2=new int[indices.size()+1][indices.size()+1];
-        for(int i = 0; i < matrice2.length; ++i)
-            Arrays.fill(matrice2[i],-1);
+        for (int[] ints : matrice2) Arrays.fill(ints, -1);
         for(int i = 0; i < indices.size(); ++i){
-            for(int j = 0; j< indices.size(); ++j){
-                matrice2[i][j]=matrice[i][j];
-            }
+            System.arraycopy(matrice[i], 0, matrice2[i], 0, indices.size());
         }
         matrice=matrice2;
     }
@@ -98,7 +95,7 @@ public class GrapheMAdj implements IGraphe{
     @Override
     public void oterArc(String source, String destination) {
         if(!indices.containsKey(source) || !indices.containsKey(destination) || matrice[indices.get(source)][indices.get(destination)]==-1)
-            throw new IllegalArgumentException("L'arc n'estiste pas");
+            throw new IllegalArgumentException("L'arc n'existe pas");
         else
             matrice[indices.get(source)][indices.get(destination)]= -1;
     }
