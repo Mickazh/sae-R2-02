@@ -76,8 +76,9 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        if(matrice[indices.get(source)][indices.get(destination)]!=-1 && indices.containsKey(source) && indices.containsKey(destination))
-            throw new IllegalArgumentException("L'arc existe deja");
+        if(matrice[indices.get(source)][indices.get(destination)]!=-1 &&
+                indices.containsKey(source) && indices.containsKey(destination) || valeur<0)
+            throw new IllegalArgumentException();
         else if(!indices.containsKey(source))
             ajouterSommet(source);
         else if (!indices.containsKey(destination))
@@ -96,7 +97,7 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void oterArc(String source, String destination) {
-        if(matrice[indices.get(source)][indices.get(destination)]==-1)
+        if(!indices.containsKey(source) || !indices.containsKey(destination) || matrice[indices.get(source)][indices.get(destination)]==-1)
             throw new IllegalArgumentException("L'arc n'estiste pas");
         else
             matrice[indices.get(source)][indices.get(destination)]= -1;
@@ -104,17 +105,26 @@ public class GrapheMAdj implements IGraphe{
 
     public String toString(){
         StringBuilder s = new StringBuilder();
-        for(int i = 0; i < matrice.length; ++i){
-            for (int j=0; j < matrice.length; ++j){
-                if(matrice[i][j]!=-1){
-                    s.append(getSommetNom(i));
+        List<String> sommets = getSommets();
+        Collections.sort(sommets);
+        for (String som : sommets){
+            List<String> succSom = getSucc(som);
+            if(succSom.isEmpty()){
+                s.append(som);
+                s.append(":, ");
+            }else{
+                Collections.sort(succSom);
+                for(String Succe : succSom){
+                    s.append(som);
                     s.append("-");
-                    s.append(getSommetNom(j));
+                    s.append(Succe);
                     s.append("(");
-                    s.append(matrice[i][j]);
-                    s.append("), ");
+                    s.append(matrice[indices.get(som)][indices.get(Succe)]);
+                    s.append(")");
+                    s.append(", ");
                 }
             }
+
         }
         s.setLength(s.length()-2);
         return s.toString();
