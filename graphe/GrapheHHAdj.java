@@ -6,8 +6,12 @@ public class GrapheHHAdj implements IGraphe{
 
     private Map<String, Map<String, Integer>> hhadj;
 
-    public GrapheHHAdj() {
+    public GrapheHHAdj(){
         hhadj = new HashMap<>();
+    }
+    public GrapheHHAdj(String grapheTxt){
+        this();
+        peupler(grapheTxt);
     }
 
     @Override
@@ -68,7 +72,7 @@ public class GrapheHHAdj implements IGraphe{
             for (String sommet : hhadj.keySet()) {
                 hhadj.get(sommet).remove(noeud);
             }
-            // Supprime le sommet lui-m�me
+            // Supprime le sommet lui-meme
             hhadj.remove(noeud);
         }
     }
@@ -90,11 +94,11 @@ public class GrapheHHAdj implements IGraphe{
             Map<String, Integer> succ = hhadj.get(sommet);
             Set<String> triSucc = new TreeSet<>(succ.keySet()); // trie les successeurs d'un sommet par ordre alphab�tique
             if (triSucc.isEmpty()) {
-                sb.append(sommet).append(":").append(", ");
+                sb.append(sommet).append(":, ");
             }
             else {
                 for (String successeur : triSucc) {
-                    sb.append(sommet).append("-").append(successeur).append("(").append(succ.get(successeur)).append(")").append(", ");
+                    sb.append(sommet).append("-").append(successeur).append("(").append(succ.get(successeur)).append("), ");
                 }
             }
         }

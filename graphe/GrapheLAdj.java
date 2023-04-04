@@ -4,7 +4,17 @@ import java.util.*;
 
 public class GrapheLAdj implements IGraphe {
 
-    private Map<String, List<Arc>> ladj = new HashMap<>();
+
+    private Map<String, List<Arc>> ladj;
+
+    public GrapheLAdj(){
+        ladj = new HashMap<>();
+    }
+
+    public GrapheLAdj(String grapheTxt){
+        this();
+        peupler(grapheTxt);
+    }
 
     @Override
     public List<String> getSommets() {

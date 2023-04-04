@@ -12,6 +12,10 @@ public class GrapheMAdj implements IGraphe{
         indices = new HashMap<>();
     }
 
+    public GrapheMAdj(String grapheTxt){
+        this();
+        peupler(grapheTxt);
+    }
     @Override
     public List<String> getSommets() {
         List<String> sommets = new ArrayList<>();
