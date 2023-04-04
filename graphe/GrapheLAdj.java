@@ -1,9 +1,6 @@
 package graphe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GrapheLAdj implements IGraphe {
 
@@ -87,5 +84,17 @@ public class GrapheLAdj implements IGraphe {
             List<Arc> succ = this.ladj.get(source);
             succ.removeIf(arc -> arc.getDestination().equals(destination));
         }
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        /*
+        A completer ...
+        */
+        if (sb.length() > 2) {
+            sb.setLength(sb.length() - 2); // Retire le dernier ", "
+        }
+
+        return sb.toString();
     }
 }
