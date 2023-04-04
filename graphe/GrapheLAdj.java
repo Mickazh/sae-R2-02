@@ -88,7 +88,7 @@ public class GrapheLAdj implements IGraphe {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        Set<String> triSommet = new TreeSet<>(ladj.keySet()); // trie les sommets par ordre alphabétique
+        Set<String> triSommet = new TreeSet<>(ladj.keySet()); // trie les sommets par ordre alphabÃ©tique
         for (String sommet : triSommet) {
             /*
             A completer ...
