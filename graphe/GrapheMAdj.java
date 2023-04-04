@@ -30,11 +30,10 @@ public class GrapheMAdj implements IGraphe{
     
     @Override
     public List<String> getSucc(String sommet) {
-        assert indices.containsKey(sommet);
         List<String> Succ = new ArrayList<>();
         int[]valSom = matrice[indices.get(sommet)];
         for(int i = 0; i < valSom.length; ++i){
-            if (valSom[i]!=0)
+            if (valSom[i]!=-1)
                 Succ.add(getSommetNom(i));
         }
         return Succ;
@@ -107,10 +106,17 @@ public class GrapheMAdj implements IGraphe{
         StringBuilder s = new StringBuilder();
         for(int i = 0; i < matrice.length; ++i){
             for (int j=0; j < matrice.length; ++j){
-                if(matrice[i][j]!=-1)
-                    s.append(indices.get(getSommetNom(i) + "-" + indices.get(getSommetNom(j))+"("+matrice[i][j] +")"));
+                if(matrice[i][j]!=-1){
+                    s.append(getSommetNom(i));
+                    s.append("-");
+                    s.append(getSommetNom(j));
+                    s.append("(");
+                    s.append(matrice[i][j]);
+                    s.append("), ");
+                }
             }
         }
+        s.setLength(s.length()-2);
         return s.toString();
     }
 
