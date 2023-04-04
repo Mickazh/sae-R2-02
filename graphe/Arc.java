@@ -26,7 +26,7 @@ public class Arc {
         this.destination = destination;
     }
 
-    public int getValeur() {
+    public Integer getValuation() {
         return valeur;
     }
 

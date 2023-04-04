@@ -1,5 +1,4 @@
 package graphe;
-
 import java.util.*;
 
 public class GrapheMAdj implements IGraphe{
@@ -31,11 +30,10 @@ public class GrapheMAdj implements IGraphe{
     
     @Override
     public List<String> getSucc(String sommet) {
-        assert indices.containsKey(sommet);
         List<String> Succ = new ArrayList<>();
         int[]valSom = matrice[indices.get(sommet)];
         for(int i = 0; i < valSom.length; ++i){
-            if (valSom[i]!=0)
+            if (valSom[i]!=-1)
                 Succ.add(getSommetNom(i));
         }
         return Succ;
@@ -73,20 +71,19 @@ public class GrapheMAdj implements IGraphe{
         if(!indices.containsKey(noeud)){
             SetMatrice();
             indices.put(noeud, indices.size());
-        }else{
-            System.out.println("Sommet deja existant");
         }
-
     }
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
-        if(indices.containsKey(source) && indices.containsKey(destination))
-            matrice[indices.get(source)][indices.get(destination)]= valeur;
-        else if(!indices.containsKey(destination)){
+        if(matrice[indices.get(source)][indices.get(destination)]!=-1 && indices.containsKey(source) && indices.containsKey(destination))
+            throw new IllegalArgumentException("L'arc existe deja");
+        else if(!indices.containsKey(source))
+            ajouterSommet(source);
+        else if (!indices.containsKey(destination))
             ajouterSommet(destination);
+        else
             matrice[indices.get(source)][indices.get(destination)]= valeur;
-        }
     }
 
     @Override
@@ -94,35 +91,32 @@ public class GrapheMAdj implements IGraphe{
         if(indices.containsKey(noeud)){
             indices.remove(noeud);
             SetMatrice();
-        }else
-            System.out.println("Le sommet n'existe pas");
-
+        }
     }
 
     @Override
     public void oterArc(String source, String destination) {
-        matrice[indices.get(source)][indices.get(destination)]= -1;
+        if(matrice[indices.get(source)][indices.get(destination)]==-1)
+            throw new IllegalArgumentException("L'arc n'estiste pas");
+        else
+            matrice[indices.get(source)][indices.get(destination)]= -1;
     }
 
     public String toString(){
         StringBuilder s = new StringBuilder();
-        s.append("  ");
-        for (String so : indices.keySet()){
-            s.append(so);
-            s.append(" ");
-        }
-        s.append(System.lineSeparator());
         for(int i = 0; i < matrice.length; ++i){
-            s.append(getSommetNom(i));
-            for(int j = 0; j < matrice.length; ++j){
+            for (int j=0; j < matrice.length; ++j){
                 if(matrice[i][j]!=-1){
+                    s.append(getSommetNom(i));
+                    s.append("-");
+                    s.append(getSommetNom(j));
+                    s.append("(");
                     s.append(matrice[i][j]);
-                }else
-                    s.append(" ");
-                s.append(" ");
+                    s.append("), ");
+                }
             }
-            s.append(System.lineSeparator());
         }
+        s.setLength(s.length()-2);
         return s.toString();
     }
 
