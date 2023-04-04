@@ -40,7 +40,7 @@ public class GrapheLArcs implements IGraphe {
     public int getValuation(String src, String dest) {
         for (Arc i : arcs) {
             if (i.getSource().equals(src) && i.getDestination().equals(dest)) {
-                return i.getValeur();
+                return i.getValuation();
             }
         }
         return -1;
@@ -100,11 +100,11 @@ public class GrapheLArcs implements IGraphe {
         StringBuilder sb = new StringBuilder();
         for (Arc arc : arcs) {
             sb.append(arc.getSource()).append("-").append(arc.getDestination());
-            if (arc.getValeur() > 0) {
-                sb.append("(").append(arc.getValeur());
+            if (arc.getValuation() > 0) {
+                sb.append("(").append(arc.getValuation());
                 sb.append("), ");
             }
-            if (arc.getValeur() == 0){
+            if (arc.getValuation() == 0){
                 sb.append(arc.getSource()).append(":");
             }
             sb.append("\n");
