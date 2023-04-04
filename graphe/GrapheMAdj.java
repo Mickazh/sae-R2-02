@@ -112,13 +112,8 @@ public class GrapheMAdj implements IGraphe{
             }else{
                 Collections.sort(succSom);
                 for(String Succe : succSom){
-                    s.append(som);
-                    s.append("-");
-                    s.append(Succe);
-                    s.append("(");
-                    s.append(matrice[indices.get(som)][indices.get(Succe)]);
-                    s.append(")");
-                    s.append(", ");
+                    s.append(som).append("-").append(Succe).append("(");
+                    s.append(matrice[indices.get(som)][indices.get(Succe)]).append(")").append(", ");
                 }
             }
 
