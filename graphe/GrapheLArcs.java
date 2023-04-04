@@ -95,4 +95,17 @@ public class GrapheLArcs implements IGraphe {
             }
         throw new IllegalArgumentException("l'arc n'est pas présent");
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Arc arc : arcs) {
+            sb.append(arc.getSource()).append("-").append(arc.getDestination());
+            if (arc.getValeur() > 0) {
+                sb.append("(").append(arc.getValeur());
+                sb.append(")");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }
