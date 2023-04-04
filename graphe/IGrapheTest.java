@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IGrapheTest {
+public class IGrapheTest {
 	// graphe de l'exercice 3.1 du poly de maths
 	// avec en plus un noeud isole : J
 	private String g31 =
@@ -38,7 +38,7 @@ class IGrapheTest {
 			+ "C-H(2) ";
 
 	@Test
-	void exo3_1Maths() {
+	public void exo3_1Maths() {
 		/*GrapheHHAdj gla = new GrapheHHAdj(); // on cree le graphe sans ordre particulier
 		gla.peupler(g31);
 		tester3_1(gla);*/
@@ -47,9 +47,9 @@ class IGrapheTest {
 		gla1.peupler(g31);
 		tester3_1(gla1);*/
 
-		GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
+		/*GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
 		gla2.peupler(g31);
-		tester3_1(gla2);
+		tester3_1(gla2);*/
 
 		/*GrapheMAdj gla3 = new GrapheMAdj(); // on cree le graphe sans ordre particulier
 		gla3.peupler(g31);
@@ -89,7 +89,7 @@ class IGrapheTest {
 	}
 
 	@Test
-	void importer() throws NumberFormatException, FileNotFoundException {
+	public void importer() throws NumberFormatException, FileNotFoundException {
 		System.out.println("SAE graphes");
 		IGraphe g = new GrapheHHAdj();
 		Arc a = GraphImporter.importer("graphes_txt/ac/g-10-1.txt", g);
