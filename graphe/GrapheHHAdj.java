@@ -2,17 +2,17 @@ package graphe;
 
 import java.util.*;
 
-public class GrapheHHAdj implements IGraphe{
+public class GrapheHHAdj extends Graphe implements IGraphe{
 
     private Map<String, Map<String, Integer>> hhadj;
 
     public GrapheHHAdj(){
         hhadj = new HashMap<>();
     }
-    public GrapheHHAdj(String grapheTxt){
+    /*public GrapheHHAdj(String grapheTxt){
         this();
         peupler(grapheTxt);
-    }
+    }*/
 
     @Override
     public List<String> getSommets() {
@@ -87,7 +87,7 @@ public class GrapheHHAdj implements IGraphe{
         }
     }
 
-    public String toString() {
+    /*public String toString() {
         StringBuilder sb = new StringBuilder();
         Set<String> triSommet = new TreeSet<>(hhadj.keySet()); // trie les sommets par ordre alphab�tique
         for (String sommet : triSommet) {
@@ -107,5 +107,5 @@ public class GrapheHHAdj implements IGraphe{
             sb.setLength(sb.length() - 2); // Retire le dernier ", "
         }
         return sb.toString();
-    }
+    }*/
 }

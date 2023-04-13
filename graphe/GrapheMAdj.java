@@ -1,7 +1,7 @@
 package graphe;
 import java.util.*;
 
-public class GrapheMAdj implements IGraphe{
+public class GrapheMAdj extends Graphe implements IGraphe{
     private int[][] matrice;
     private Map<String,Integer> indices;
     //String est la clé
@@ -12,10 +12,6 @@ public class GrapheMAdj implements IGraphe{
         indices = new HashMap<>();
     }
 
-    public GrapheMAdj(String grapheTxt){
-        this();
-        peupler(grapheTxt);
-    }
     @Override
     public List<String> getSommets() {
         List<String> sommets = new ArrayList<>();
@@ -77,13 +73,13 @@ public class GrapheMAdj implements IGraphe{
 
     @Override
     public void ajouterArc(String source, String destination, Integer valeur) {
+        if(!indices.containsKey(source))
+            ajouterSommet(source);
+        if (!indices.containsKey(destination))
+            ajouterSommet(destination);
         if(matrice[indices.get(source)][indices.get(destination)]!=-1 &&
                 indices.containsKey(source) && indices.containsKey(destination) || valeur<0)
             throw new IllegalArgumentException();
-        else if(!indices.containsKey(source))
-            ajouterSommet(source);
-        else if (!indices.containsKey(destination))
-            ajouterSommet(destination);
         else
             matrice[indices.get(source)][indices.get(destination)]= valeur;
     }
@@ -104,7 +100,7 @@ public class GrapheMAdj implements IGraphe{
             matrice[indices.get(source)][indices.get(destination)]= -1;
     }
 
-    public String toString(){
+    /*public String toString(){
         StringBuilder s = new StringBuilder();
         List<String> sommets = getSommets();
         Collections.sort(sommets);
@@ -124,6 +120,6 @@ public class GrapheMAdj implements IGraphe{
         }
         s.setLength(s.length()-2);
         return s.toString();
-    }
+    }*/
 
 }

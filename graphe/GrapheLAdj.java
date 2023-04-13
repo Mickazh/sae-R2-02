@@ -2,18 +2,13 @@ package graphe;
 
 import java.util.*;
 
-public class GrapheLAdj implements IGraphe {
+public class GrapheLAdj extends Graphe implements IGraphe {
 
 
     private Map<String, List<Arc>> ladj;
 
     public GrapheLAdj(){
         ladj = new HashMap<>();
-    }
-
-    public GrapheLAdj(String grapheTxt){
-        this();
-        peupler(grapheTxt);
     }
 
     @Override
@@ -102,7 +97,7 @@ public class GrapheLAdj implements IGraphe {
         }
     }
 
-    public String toString() {
+    /*public String toString() {
         StringBuilder sb = new StringBuilder();
         Set<String> triSommet = new TreeSet<>(ladj.keySet());
         for (String sommet : triSommet) {
@@ -119,5 +114,5 @@ public class GrapheLAdj implements IGraphe {
             sb.setLength(sb.length() - 2);
         }
         return sb.toString();
-    }
+    }*/
 }

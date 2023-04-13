@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GrapheLArcs implements IGraphe {
+public class GrapheLArcs extends Graphe implements IGraphe {
     private List<Arc> arcs;
 
     public GrapheLArcs() {
         arcs = new ArrayList<>();
     }
 
-    public GrapheLArcs(String grapheTxt) {
-        this();
-        peupler(grapheTxt);
-    }
 
     @Override
     public List<String> getSommets() {
@@ -101,7 +97,7 @@ public class GrapheLArcs implements IGraphe {
         throw new IllegalArgumentException("l'arc n'est pas présent");
     }
 
-    public String toString() {
+    /*public String toString() {
         StringBuilder sb = new StringBuilder();
         List<String> sommets = getSommets();
         Collections.sort(sommets);
@@ -127,5 +123,5 @@ public class GrapheLArcs implements IGraphe {
         }
 
         return sb.toString();
-    }
+    }*/
 }
