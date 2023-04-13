@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GrapheLArcs extends Graphe implements IGraphe {
+public class GrapheLArcs extends Graphe{
     private List<Arc> arcs;
 
     public GrapheLArcs() {

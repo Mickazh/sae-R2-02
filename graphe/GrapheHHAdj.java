@@ -2,7 +2,7 @@ package graphe;
 
 import java.util.*;
 
-public class GrapheHHAdj extends Graphe implements IGraphe{
+public class GrapheHHAdj extends Graphe{
 
     private Map<String, Map<String, Integer>> hhadj;
 

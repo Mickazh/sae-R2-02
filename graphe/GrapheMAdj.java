@@ -1,7 +1,7 @@
 package graphe;
 import java.util.*;
 
-public class GrapheMAdj extends Graphe implements IGraphe{
+public class GrapheMAdj extends Graphe{
     private int[][] matrice;
     private Map<String,Integer> indices;
     //String est la clé
