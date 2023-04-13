@@ -9,10 +9,6 @@ public class GrapheHHAdj extends Graphe implements IGraphe{
     public GrapheHHAdj(){
         hhadj = new HashMap<>();
     }
-    /*public GrapheHHAdj(String grapheTxt){
-        this();
-        peupler(grapheTxt);
-    }*/
 
     @Override
     public List<String> getSommets() {
