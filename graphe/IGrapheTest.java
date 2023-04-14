@@ -1,16 +1,19 @@
 package graphe;
 
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class IGrapheTest {
+	private IGraphe[] graphes = {
+			new GrapheLArcs(), new GrapheLAdj(),
+			new GrapheMAdj(), new GrapheHHAdj()
+	};
 	// graphe de l'exercice 3.1 du poly de maths
 	// avec en plus un noeud isole : J
 	private String g31 =
@@ -25,7 +28,7 @@ class IGrapheTest {
 					+ "I-H(10), "
 					+ "J:";
 
-	private String g31a = ""       // melangee
+	private String g31a = ""       // arcs non tries
 			+ "D-C(5), D-E(3), D-B(3), "
 			+ "E-G(3), E-C(1), E-H(7), "
 			+ "I-H(10), "
@@ -39,25 +42,10 @@ class IGrapheTest {
 
 	@Test
 	void exo3_1Maths() {
-		/*GrapheHHAdj gla = new GrapheHHAdj(); // on cree le graphe sans ordre particulier
-		gla.peupler(g31);
-		tester3_1(gla);*/
-
-		/*GrapheLArcs gla1 = new GrapheLArcs(); // on cree le graphe sans ordre particulier
-		gla1.peupler(g31);
-		tester3_1(gla1);*/
-
-		GrapheLAdj gla2 = new GrapheLAdj(); // on cree le graphe sans ordre particulier
-		gla2.peupler(g31);
-		tester3_1(gla2);
-
-		/*GrapheMAdj gla3 = new GrapheMAdj(); // on cree le graphe sans ordre particulier
-		gla3.peupler(g31);
-		tester3_1(gla3);*/
-
-		/*GrapheHHAdj glarcs = new GrapheHHAdj();
-		glarcs.peupler(g31a);
-		tester3_1(glarcs);*/
+		for (IGraphe g : graphes) {
+			g.peupler(g31a);
+			tester3_1(g);
+		}
 	}
 
 	void tester3_1(IGraphe g) {
@@ -78,7 +66,7 @@ class IGrapheTest {
 		g.ajouterSommet("A"); // ne fait rien car A est deja present
 		assertEquals(g31, g.toString());
 		assertThrows(IllegalArgumentException.class,
-				() -> g.ajouterArc("G", "B", 1));        // deja present
+				() -> g.ajouterArc("G", "B", 1));		// deja present
 		g.oterSommet("X"); // ne fait rien si le sommet n'est pas present
 		assertEquals(g31, g.toString());
 		assertThrows(IllegalArgumentException.class,
@@ -88,18 +76,22 @@ class IGrapheTest {
 				() -> g.ajouterArc("A", "B", -1)); // valuation negative
 	}
 
-	@Test
-	void importer() throws NumberFormatException, FileNotFoundException {
-		System.out.println("SAE graphes");
-		IGraphe g = new GrapheHHAdj();
+	void testImportation(IGraphe g) {
 		Arc a = GraphImporter.importer("graphes_txt/ac/g-10-1.txt", g);
-		assertEquals(g.toString(), "1-3(5), "
-				+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
-				+ "3-4(4), 3-5(4), 4-10(1), 4-2(1), 4-7(3), "
-				+ "5-9(4), 6-2(3), 6-3(4), 7-3(2),"
-				+ " 8-2(4), 8-6(1), 9-2(4)");
+		assertEquals("1-3(5), "
+						+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
+						+ "3-4(4), 3-5(4), 4-10(1), 4-2(1), 4-7(3), "
+						+ "5-9(4), 6-2(3), 6-3(4), 7-3(2),"
+						+ " 8-2(4), 8-6(1), 9-2(4)",
+				g.toString());
 		assertEquals("5", a.getSource());
 		assertEquals("7", a.getDestination());
+	}
+
+	@Test
+	void importer() throws NumberFormatException, FileNotFoundException {
+		for (IGraphe g : graphes)
+			testImportation(g);
 	}
 
 }

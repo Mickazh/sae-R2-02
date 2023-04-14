@@ -2,11 +2,11 @@ package graphe;
 
 import java.util.*;
 
-public class GrapheHHAdj implements IGraphe{
+public class GrapheHHAdj extends Graphe{
 
     private Map<String, Map<String, Integer>> hhadj;
 
-    public GrapheHHAdj() {
+    public GrapheHHAdj(){
         hhadj = new HashMap<>();
     }
 
@@ -25,7 +25,7 @@ public class GrapheHHAdj implements IGraphe{
         if (contientArc(src, dest)) {
             return hhadj.get(src).get(dest);
         } else {
-            throw new RuntimeException("Aucun arc trouvé entre " + src + " et " + dest);
+            throw new RuntimeException("Aucun arc trouve entre " + src + " et " + dest);
         }
     }
 
@@ -68,7 +68,7 @@ public class GrapheHHAdj implements IGraphe{
             for (String sommet : hhadj.keySet()) {
                 hhadj.get(sommet).remove(noeud);
             }
-            // Supprime le sommet lui-même
+            // Supprime le sommet lui-meme
             hhadj.remove(noeud);
         }
     }
@@ -83,18 +83,18 @@ public class GrapheHHAdj implements IGraphe{
         }
     }
 
-    public String toString() {
+    /*public String toString() {
         StringBuilder sb = new StringBuilder();
-        Set<String> triSommet = new TreeSet<>(hhadj.keySet()); // trie les sommets par ordre alphabétique
+        Set<String> triSommet = new TreeSet<>(hhadj.keySet()); // trie les sommets par ordre alphabï¿½tique
         for (String sommet : triSommet) {
             Map<String, Integer> succ = hhadj.get(sommet);
-            Set<String> triSucc = new TreeSet<>(succ.keySet()); // trie les successeurs d'un sommet par ordre alphabétique
+            Set<String> triSucc = new TreeSet<>(succ.keySet()); // trie les successeurs d'un sommet par ordre alphabï¿½tique
             if (triSucc.isEmpty()) {
-                sb.append(sommet).append(":").append(", ");
+                sb.append(sommet).append(":, ");
             }
             else {
                 for (String successeur : triSucc) {
-                    sb.append(sommet).append("-").append(successeur).append("(").append(succ.get(successeur)).append(")").append(", ");
+                    sb.append(sommet).append("-").append(successeur).append("(").append(succ.get(successeur)).append("), ");
                 }
             }
         }
@@ -103,5 +103,5 @@ public class GrapheHHAdj implements IGraphe{
             sb.setLength(sb.length() - 2); // Retire le dernier ", "
         }
         return sb.toString();
-    }
+    }*/
 }
