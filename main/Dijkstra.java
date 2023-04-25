@@ -5,7 +5,7 @@ import java.util.Map;
 
 import graphe.IGrapheConst;
 
-public class CheminCourt {
+public class Dijkstra {
 
     public static void Dijkstra(String source, String destination, IGrapheConst graphe){
         ArrayList<String> sommets = new ArrayList<>(graphe.getSommets());
