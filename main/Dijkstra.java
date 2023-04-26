@@ -1,6 +1,7 @@
 package main;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import graphe.IGrapheConst;
@@ -58,7 +59,7 @@ public class Dijkstra {
      * @param pred
      */
     public static void dijkstra(IGrapheConst graphe, String source, Map<String, Integer> dist, Map<String, String> pred){
-        ArrayList<String> sommets = new ArrayList<>(graphe.getSommets());
+        ArrayList<String> sommets = new ArrayList<>(graphe.getSommets()); //utiliser une linkedlist et la trier
         Integer alt = 0;
         for (String sommet : sommets) {
             dist.put(sommet, null); //initialiser plutot à null car on ne peut pas representer l'infinie avec la classe Integer
@@ -70,9 +71,13 @@ public class Dijkstra {
             pred.put(succ, source);
         }
 
-        String u;
+        String u = null;
         while (!sommets.isEmpty()){
             u = getMinVal(dist, graphe, sommets);
+            if (u.equals("")){
+                termineDijkstra(dist, sommets);
+                return;
+            }
             sommets.remove(u);
 
             for (String v : graphe.getSucc(u)) {
@@ -94,8 +99,15 @@ public class Dijkstra {
             }
         }
     }
+
+    private static void termineDijkstra(Map<String, Integer> dist, List<String> sommets){
+        for (String sommet : sommets) {
+            // dist.put(sommet, -1);
+            dist.remove(sommet);
+        }
+    }
         
-    private static String getMinVal(Map<String, Integer> dist, IGrapheConst graphe, ArrayList<String> sommets) {
+    private static String getMinVal(Map<String, Integer> dist, IGrapheConst graphe, List<String> sommets) {
         // Integer valMin = null;
         // String noeuMin = "";
         // for (String noeu : sommets) {
@@ -124,7 +136,15 @@ public class Dijkstra {
                 valMin = val;
                 noeuMin = noeu;
             }
+            // un peu plus compacte mais peut etre moins comprehensible
+            // if ((dist.get(noeu) == null ? Double.POSITIVE_INFINITY : Double.valueOf(dist.get(noeu))) < valMin){
+            //     valMin = val;
+            //     noeuMin = noeu;
+            // }
         }
+        // if (noeuMin.equals("")){
+        //     return sommets.get(0);
+        // }
         return noeuMin;
     }
 
