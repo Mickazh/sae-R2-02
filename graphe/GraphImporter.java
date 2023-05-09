@@ -43,7 +43,7 @@ public class GraphImporter {
                 listeEntiers.addAll(tempList);
             }
         } catch (NumberFormatException e) {
-            throw new IOException("Le fichier contient des données mal formatees.", e);
+            throw new IOException("Le fichier contient des données mal formatees. "+e.toString(), e);
         }
 
         return distance;
@@ -81,6 +81,14 @@ public class GraphImporter {
 		String source;
 		int valuation;
 		String destination;
+		if (parts.length == 2) { // derniere ligne 
+			String[] newParts = new String[3];
+			newParts[0] = parts[0];
+			newParts[1] = "00";
+			newParts[2] = parts[1];
+			parts = newParts;
+		}
+			
 		try {
 			source = parts[0];
 			valuation = Integer.valueOf(parts[1]);
