@@ -1,5 +1,8 @@
-package graphe;
+package graphe.ihm;
 
+
+import graphe.core.Arc;
+import graphe.core.IGraphe;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,6 +55,17 @@ public class GraphImporter {
 	public static Arc importer(String filePath, IGraphe g)  {
 		File file = new File(filePath);
 		return importer(file, g);
+	}
+
+	// retourne une instance vide de la classe de g
+	// utile quand on importe plusieurs fichiers
+	// pour repartir d'un graphe vide pour chaque fichier
+	public static IGraphe spawn(IGraphe g) {
+		try {
+			return g.getClass().getDeclaredConstructor().newInstance();
+		} catch (Exception e) {
+			throw new RuntimeException("Impossible de spawn un graphe de type "+ g.getClass().getSimpleName());
+		}
 	}
 
 	public static Arc importer(File file, IGraphe g)  {

@@ -1,4 +1,4 @@
-package main;
+package graphe.algos;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
-import graphe.IGrapheConst;
+import graphe.core.IGrapheConst;
 
 public class Dijkstra {
 
