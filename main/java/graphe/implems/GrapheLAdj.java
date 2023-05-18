@@ -1,6 +1,8 @@
-package graphe;
+package graphe.implems;
 
 import java.util.*;
+
+import graphe.core.Arc;
 
 public class GrapheLAdj extends Graphe{
 

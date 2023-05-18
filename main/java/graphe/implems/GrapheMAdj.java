@@ -1,4 +1,4 @@
-package graphe;
+package graphe.implems;
 import java.util.*;
 
 public class GrapheMAdj extends Graphe{

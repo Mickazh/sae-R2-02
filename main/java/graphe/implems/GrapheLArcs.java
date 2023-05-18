@@ -1,8 +1,10 @@
-package graphe;
+package graphe.implems;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import graphe.core.Arc;
 
 public class GrapheLArcs extends Graphe{
     private List<Arc> arcs;
