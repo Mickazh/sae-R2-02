@@ -12,11 +12,39 @@ import java.util.Set;
 import graphe.core.IGrapheConst;
 
 public class Dijkstra {
+    
+    public static void dijkstra(IGrapheConst graphe, String source, Map<String, Integer> dist, Map<String, String> pred) {
+        PriorityQueue<String> sommetsAVisite = new PriorityQueue<>(Comparator.comparingInt(dist::get));
+        Set<String> sommetsDejaVisite = new HashSet<>();
+        dist.put(source, 0);
+        sommetsAVisite.offer(source);
+    
+        while (!sommetsAVisite.isEmpty()) {
+            String sommetActuel = sommetsAVisite.poll();
+
+            if (sommetsDejaVisite.contains(sommetActuel)) {continue;}
+
+            sommetsDejaVisite.add(sommetActuel);
+            updateDist(sommetActuel, dist, pred, sommetsAVisite, graphe);
+        }
+    }
+    
+    private static void updateDist(String sommetActuel, Map<String, Integer> dist, Map<String, String> pred,
+        PriorityQueue<String> sommetsAVisite, IGrapheConst graphe) {
+        for (String succ : graphe.getSucc(sommetActuel)) {
+            int distToSucc = dist.get(sommetActuel) + graphe.getValuation(sommetActuel, succ);
+            if (distToSucc < dist.getOrDefault(succ, Integer.MAX_VALUE)) {
+                dist.put(succ, distToSucc);
+                pred.put(succ, sommetActuel);
+                sommetsAVisite.offer(succ);
+            }
+        }
+    }
 
     // public static void Dijkstra(String source, String destination, IGrapheConst graphe){
-    //     ArrayList<String> sommets = new ArrayList<>(graphe.getSommets());
-    //     HashMap<String, Double> dist = new HashMap<>();
-    //     HashMap<String, String> prev = new HashMap<>();
+        //     ArrayList<String> sommets = new ArrayList<>(graphe.getSommets());
+        //     HashMap<String, Double> dist = new HashMap<>();
+        //     HashMap<String, String> prev = new HashMap<>();
     //     double alt = 0;
     //     for (String sommet : sommets) {
     //         dist.put(sommet, Double.POSITIVE_INFINITY); //initialiser plutot à null car on ne peut pas representer l'infinie avec la classe Integer
@@ -111,30 +139,6 @@ public class Dijkstra {
     //     }
     // }
 
-    public static void dijkstra(IGrapheConst graphe, String source, Map<String, Integer> dist, Map<String, String> pred) {
-        PriorityQueue<String> pq = new PriorityQueue<>(Comparator.comparingInt(dist::get));
-        Set<String> visited = new HashSet<>();
-        dist.put(source, 0);
-        pq.offer(source);
-
-        while (!pq.isEmpty()) {
-            String current = pq.poll();
-
-            if (visited.contains(current)) {
-                continue;
-            }
-            visited.add(current);
-
-            for (String succ : graphe.getSucc(current)) {
-                int distToSucc = dist.get(current) + graphe.getValuation(current, succ);
-                if (distToSucc < dist.getOrDefault(succ, Integer.MAX_VALUE)) {
-                    dist.put(succ, distToSucc);
-                    pred.put(succ, current);
-                    pq.offer(succ);
-                }
-            }
-        }
-    }
 
     // private static void termineDijkstra(Map<String, Integer> dist, List<String> sommets){
     //     for (String sommet : sommets) {
