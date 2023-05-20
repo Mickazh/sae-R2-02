@@ -1,0 +1,59 @@
+graphe: g-1001-1.txt
+On demande un chemin de 311 vers 151
+Graphe de  1001 sommets
+reponse: r-1001-1.txt
+distance attendue : 47
+chemin possible : [311, 394, 191, 365, 871, 151]
+dijkstra a dure 120 millisecondes
+Chemin trouve : <311, 394, 191, 365, 871, 151>
+Distance trouvee : 47
+
+graphe: g-101-1.txt
+On demande un chemin de 55 vers 8
+Graphe de  101 sommets
+reponse: r-101-1.txt
+distance attendue : 250
+chemin possible : [55, 59, 96, 68, 8]
+dijkstra a dure 1 millisecondes
+Chemin trouve : <55, 59, 96, 68, 8>
+Distance trouvee : 250
+
+graphe: g-11-1.txt
+On demande un chemin de 9 vers 4
+Graphe de  11 sommets
+reponse: r-11-1.txt
+distance attendue : 1332
+chemin possible : [9, 3, 6, 4]
+dijkstra a dure 0 millisecondes
+Chemin trouve : <9, 3, 6, 4>
+Distance trouvee : 1332
+
+graphe: g-301-1.txt
+On demande un chemin de 122 vers 217
+Graphe de  301 sommets
+reponse: r-301-1.txt
+distance attendue : 95
+chemin possible : [122, 75, 293, 29, 23, 146, 249, 87, 13, 217]
+dijkstra a dure 18 millisecondes
+Chemin trouve : <122, 75, 293, 29, 23, 146, 249, 87, 13, 217>
+Distance trouvee : 95
+
+graphe: g-5001-1.txt
+On demande un chemin de 2393 vers 1677
+Graphe de  5001 sommets
+reponse: r-5001-1.txt
+distance attendue : 13
+chemin possible : [2393, 4239, 1379, 2932, 1361, 1603, 1476, 1677]
+dijkstra a dure 1278 millisecondes
+Chemin trouve : <2393, 4239, 1379, 2932, 1361, 1603, 1476, 1677>
+Distance trouvee : 13
+
+graphe: g-501-1.txt
+On demande un chemin de 107 vers 24
+Graphe de  501 sommets
+reponse: r-501-1.txt
+distance attendue : 74
+chemin possible : [107, 348, 100, 282, 24]
+dijkstra a dure 29 millisecondes
+Chemin trouve : <107, 348, 100, 282, 24>
+Distance trouvee : 74
