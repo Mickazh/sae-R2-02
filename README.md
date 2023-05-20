@@ -9,3 +9,15 @@
 
 # Chargé de TP:
 - Lisa Djerbi
+
+# Implémentations
+
+GrapheLArcs ✔️  
+GrapheMAdj ✔️  
+GrapheLAdj ✔️  
+GrapheHHAdj ✔️  
+
+# Dijkstra (testé avec GrapheHHAdj pour une question de rapidité)
+DorogvtsevMendes✔️  
+Barabasi ✔️  
+Full ✔️  
